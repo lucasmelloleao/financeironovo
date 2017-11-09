@@ -1,0 +1,2 @@
+lucas;analista;campo mourao
+juca;agronomo;maringa

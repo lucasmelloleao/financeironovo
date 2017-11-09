@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,15 +12,15 @@
         <link rel="stylesheet" href="<?php echo asset('node_modules/bootstrap-select/dist/css/bootstrap-select.min.css'); ?>" />
         <link rel="stylesheet" href="<?php echo asset('css/app.css'); ?>" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">        
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">        
  
       
          
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.js" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
       
 
@@ -29,12 +30,14 @@
      
 
 
+        
 
 
 
-<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
-<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
-<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.16/css/jquery.dataTables_themeroller.css">
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables_themeroller.css">
 
 
 
@@ -73,13 +76,12 @@
         
             <script src="<?php echo asset('js/app.js'); ?>"     type="text/javascript"></script>
 
+<script  src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+<script  src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.js"></script>
+<script  src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+<script  src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script  src="https://cdn.datatables.net/plug-ins/1.10.16/i18n/Portuguese-Brasil.json"></script>
 
-<script  src="http://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
-<script  src="http://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.js"></script>
-<script  src="http://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
-<script  src="http://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script  src="//cdn.datatables.net/plug-ins/1.10.16/i18n/Portuguese-Brasil.json"></script>
-        
           
      
 

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Painel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Painel;
-use App\models\conta;
+use App\Models\conta;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 

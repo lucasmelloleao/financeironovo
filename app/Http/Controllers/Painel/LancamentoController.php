@@ -5,10 +5,10 @@ use Illuminate\Http\Helpers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Painel;
-use App\models\lancamento;
-use App\models\parceiro;
-use App\models\conta;
-use App\models\despesareceita;
+use App\Models\lancamento;
+use App\Models\parceiro;
+use App\Models\conta;
+use App\Models\despesareceita;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 

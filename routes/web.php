@@ -32,9 +32,9 @@ Route::resource('/painel/conta/update', 'Painel\ContaController');
 
 
 
-Route::resource('/painel/despesareceita',        'Painel\DespesareceitaController');
-Route::resource('/painel/despesareceita/store',  'Painel\DespesareceitaController');
-Route::resource('/painel/despesareceita/update', 'Painel\DespesareceitaController');
+Route::resource('/painel/despesareceita',        'Painel\DespesaReceitaController');
+Route::resource('/painel/despesareceita/store',  'Painel\DespesaReceitaController');
+Route::resource('/painel/despesareceita/update', 'Painel\DespesaReceitaController');
 
 
 

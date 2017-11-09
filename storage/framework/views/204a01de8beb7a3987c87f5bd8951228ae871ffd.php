@@ -30,7 +30,7 @@
                                 <li class="active">  <a href="<?php echo e(url('painel/parceiro')); ?>">Parceiro</a></li>
                                 <li class="active">  <a href="<?php echo e(url('painel/conta')); ?>">Contas Vinculadas</a></li>
                                 <li class="active">  <a href="<?php echo e(url('painel/despesareceita')); ?>">Despesas/Receitas</a></li>
-                                <li><a href="dashboard_2.html">Dashboard v.2</a></li>
+                                
                                 
                             </ul>
                  </li>

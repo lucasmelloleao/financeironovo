@@ -1,3 +1,6 @@
+
+
+
 @extends('layouts.painel.app')
 
 
@@ -19,8 +22,7 @@
     Cadastrar </a>
 <p></p>
 
-<table id="tabelax" class="display" cellspacing="0" width="100%">
-    <tbody>
+<table id="tabela" class="display" cellspacing="0" width="100%">
     <thead>
         <tr>
             <th> #</th>
@@ -32,6 +34,7 @@
 
         </tr>
     </thead>
+    <tbody>
     @foreach ($contas as $conta)
 
     <tr>
@@ -62,11 +65,11 @@
 
 	
 <script>
-
+/* global $ */
    $(document).ready(function() {
-    $('#tabelax').DataTable( {
+    $('#tabela').DataTable( {
         "language": {
-            "url": "http://cdn.datatables.net/plug-ins/1.10.16/i18n/Portuguese-Brasil.json"
+            "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Portuguese-Brasil.json"
         }
     } );
 } );

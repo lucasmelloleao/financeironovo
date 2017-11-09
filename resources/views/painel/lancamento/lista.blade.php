@@ -7,6 +7,9 @@
 @section('content')
 
 
+
+
+
   <style type="text/css">
     
 td.bgVerde {
@@ -33,7 +36,7 @@ td.bgVermelho {
     Cadastrar </a>
 <p></p>
 
-<table id="example" class="display" cellspacing="0" width="100%">
+<table id="tabela" class="display" cellspacing="0" width="100%">
 
     <thead>
         <tr>
@@ -111,17 +114,15 @@ td.bgVermelho {
 
 	
 <script>
-
+/* global $ */
    $(document).ready(function() {
-    $('#example').DataTable( {
+    $('#tabela').DataTable( {
         "language": {
             "url": "http://cdn.datatables.net/plug-ins/1.10.16/i18n/Portuguese-Brasil.json"
         }
     } );
 } );
 </script>
-
-
 
 
 

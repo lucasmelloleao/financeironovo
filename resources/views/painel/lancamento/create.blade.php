@@ -93,7 +93,7 @@
                              </div>
                              
                             <div class="form-group">
-                               <input type="text"  class="lg-col-12 form-control" name= "descrição" placeholder="Descrição" value="{{$lancamento->descricao}}" 
+                               <input type="text"  class="lg-col-12 form-control" name= "descricao" placeholder="Descrição" value="{{$lancamento->descricao}}" 
                             </div>
 
                           

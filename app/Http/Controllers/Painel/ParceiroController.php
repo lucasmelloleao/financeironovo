@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Painel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Painel;
-use App\models\parceiro;
-use App\models\municipio;
-use App\models\documento;
-use App\models\endereco;
-use App\models\fone;
+use App\Models\parceiro;
+use App\Models\municipio;
+use App\Models\documento;
+use App\Models\endereco;
+use App\Models\fone;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 

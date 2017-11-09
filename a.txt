@@ -1,0 +1,5755 @@
+------------------------------------------------------
+-- Export file for user COMERCIAL_PRO               --
+-- Created by Administrator on 03/11/2017, 10:33:15 --
+------------------------------------------------------
+
+spool A.log
+
+prompt
+prompt Creating table FIN_BASE
+prompt =======================
+prompt
+create table COMERCIAL_PRO.FIN_BASE
+(
+  CD_ORGANIZ       NUMBER(7) not null,
+  CD_EMPRESA       NUMBER(6) not null,
+  NR_PROCESSO      NUMBER(10) not null,
+  U_VERSION        CHAR(1),
+  CD_CEDENTE       NUMBER(7),
+  CD_PARCEIRO      NUMBER(7),
+  DT_MOVTO         DATE,
+  TP_FATURA        CHAR(1),
+  NR_FATURA        NUMBER(7),
+  CD_SERIE         VARCHAR2(5),
+  CD_ESPECIE       VARCHAR2(10),
+  TP_FORMAPAGTO    NUMBER(1) not null,
+  CD_CONDPAGTO     NUMBER(7),
+  CD_CC            VARCHAR2(10),
+  CD_CARTEIRA      VARCHAR2(10),
+  CD_NOSSONR       VARCHAR2(10),
+  DT_EMISSAO       DATE,
+  ID_NOTA          NUMBER(10),
+  NR_NOTA          NUMBER(10),
+  NM_COMPONENTE    VARCHAR2(16) not null,
+  CD_OPERADOR      NUMBER(6) not null,
+  DT_TRANSACAO     DATE not null,
+  CD_TIPODOCTO     NUMBER(7) not null,
+  NR_PROCDOCTO     NUMBER(10) not null,
+  NR_ORDEM         NUMBER(7),
+  PE_DESCONTOGERAL NUMBER(5,2)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.FIN_BASE
+  add constraint FIN_BASEP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_PROCESSO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table FIN_CUPOM
+prompt ========================
+prompt
+create table COMERCIAL_PRO.FIN_CUPOM
+(
+  CD_ORGANIZ    NUMBER(7) not null,
+  CD_EMPRESA    NUMBER(6) not null,
+  NR_CUPOM      NUMBER(10) not null,
+  U_VERSION     CHAR(1),
+  DT_MOVTO      DATE,
+  DS_CUPOM      VARCHAR2(15),
+  VL_CUPOM      NUMBER(14,2),
+  VL_CUSTO      NUMBER(14,2),
+  QT_IMPRESSO   NUMBER(2),
+  CD_CLIENTE    NUMBER(7),
+  DT_CLIENTE    DATE,
+  CD_FORNECEDOR NUMBER(7),
+  DT_FORNECEDOR DATE,
+  DT_CANCELADO  DATE,
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null,
+  CD_OPERACAO   NUMBER(7),
+  NR_LCTORDEM   NUMBER(7)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.FIN_CUPOM
+  add constraint FIN_CUPOMP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_CUPOM)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table FIN_DEVOLVECHQ
+prompt =============================
+prompt
+create table COMERCIAL_PRO.FIN_DEVOLVECHQ
+(
+  CD_ORGANIZ    NUMBER(7) not null,
+  CD_EMPRESA    NUMBER(6) not null,
+  NR_LANCAMENTO NUMBER(7) not null,
+  U_VERSION     CHAR(1),
+  NR_CHEQUE     NUMBER(10),
+  DT_MOVTO      DATE,
+  CD_PARCEIRO   NUMBER(7),
+  TP_MOVTO      CHAR(1),
+  VL_OPERACAO   NUMBER(14,2),
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null,
+  NR_RECIBO     NUMBER(7) not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.FIN_DEVOLVECHQ
+  add constraint FIN_DEVOLVECHQP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_LANCAMENTO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table FIN_FECHA
+prompt ========================
+prompt
+create table COMERCIAL_PRO.FIN_FECHA
+(
+  CD_ORGANIZ    NUMBER(7) not null,
+  CD_EMPRESA    NUMBER(6) not null,
+  NR_FECHAMENTO NUMBER(7) not null,
+  U_VERSION     CHAR(1),
+  DT_MOVTO      DATE,
+  VL_ANTERIOR   NUMBER(14,2),
+  VL_CREDITO    NUMBER(14,2),
+  VL_DEBITO     NUMBER(14,2),
+  VL_SALDO      NUMBER(14,2),
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null,
+  VL_AJUSTENTRA NUMBER(14,2),
+  VL_AJUSTESAI  NUMBER(14,2),
+  DS_OBSERVA    VARCHAR2(200)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.FIN_FECHA
+  add constraint FIN_FECHAP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_FECHAMENTO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table FIN_FECHACARTAO
+prompt ==============================
+prompt
+create table COMERCIAL_PRO.FIN_FECHACARTAO
+(
+  CD_ORGANIZ     NUMBER(7) not null,
+  CD_EMPRESA     NUMBER(6) not null,
+  NR_FECHAMENTO  NUMBER(7) not null,
+  U_VERSION      CHAR(1),
+  DT_MOVTO       DATE,
+  PE_TARIFA      NUMBER(7,4),
+  VL_TARIFA      NUMBER(14,2),
+  VL_ORIGEM      NUMBER(14,2),
+  VL_TRANSFERIDO NUMBER(14,2),
+  CD_OPERADOR    NUMBER(6) not null,
+  DT_TRANSACAO   DATE not null,
+  DS_OBSERVA     VARCHAR2(200)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.FIN_FECHACARTAO
+  add constraint FIN_FECHACARTAOP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_FECHAMENTO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table FIN_GRUPO
+prompt ========================
+prompt
+create table COMERCIAL_PRO.FIN_GRUPO
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  CD_GRUPO     NUMBER(7) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  DS_GRUPO     VARCHAR2(100),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null,
+  TP_DEBCRED   CHAR(1) not null,
+  IN_PESSOAL   CHAR(1)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.FIN_GRUPO
+  add constraint FIN_GRUPOP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_GRUPO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table FIN_ITEM
+prompt =======================
+prompt
+create table COMERCIAL_PRO.FIN_ITEM
+(
+  CD_ORGANIZ    NUMBER(7) not null,
+  CD_EMPRESA    NUMBER(6) not null,
+  NR_PROCESSO   NUMBER(10) not null,
+  NR_SEQFAT     NUMBER(3) not null,
+  U_VERSION     CHAR(1),
+  DT_VENCIMENTO DATE,
+  DT_JUROS      DATE,
+  CD_OPERADOR   NUMBER(6),
+  DT_TRANSACAO  DATE,
+  IN_ENVIABANCO CHAR(1),
+  DT_ENVIABANCO DATE,
+  PE_JURODIA    NUMBER(5,2),
+  PE_MULTA      NUMBER(5,2),
+  DT_LIMDESC    DATE
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.FIN_ITEM
+  add constraint BIN$Oib96re2+DPgUMPI7M4upQ==$0 primary key (CD_ORGANIZ, CD_EMPRESA, NR_PROCESSO, NR_SEQFAT);
+alter table COMERCIAL_PRO.FIN_ITEM
+  add constraint BIN$Oib96re0+DPgUMPI7M4upQ==$0
+  check ("DT_TRANSACAO" IS NOT NULL);
+alter table COMERCIAL_PRO.FIN_ITEM
+  add constraint BIN$Oib96re1+DPgUMPI7M4upQ==$0
+  check ("IN_ENVIABANCO" IS NOT NULL);
+alter table COMERCIAL_PRO.FIN_ITEM
+  add constraint BIN$Oib96rez+DPgUMPI7M4upQ==$0
+  check ("CD_OPERADOR" IS NOT NULL);
+create unique index COMERCIAL_PRO.BIN$Oib96re3+DPgUMPI7M4upQ==$0 on COMERCIAL_PRO.FIN_ITEM (CD_ORGANIZ, CD_EMPRESA, NR_PROCESSO, NR_SEQFAT)
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table FIN_LANCAMENTO
+prompt =============================
+prompt
+create table COMERCIAL_PRO.FIN_LANCAMENTO
+(
+  CD_ORGANIZ       NUMBER(7) not null,
+  CD_EMPRESA       NUMBER(6) not null,
+  NR_RECIBO        NUMBER(10) not null,
+  NR_SEQUENCIA     NUMBER(3) not null,
+  U_VERSION        CHAR(1),
+  CD_PARCEIRO      NUMBER(7),
+  DT_MOVTO         DATE not null,
+  TP_PAGAMENTO     NUMBER(1) not null,
+  TP_MOEDA         VARCHAR2(3) not null,
+  VL_OPERACAO      NUMBER(14,2) not null,
+  VL_JURO          NUMBER(14,2),
+  VL_DESCONTO      NUMBER(14,2),
+  TP_RECIBO        NUMBER(1) not null,
+  NR_RECIBOEST     NUMBER(10),
+  NR_RECDINHEIRO   NUMBER(10),
+  DT_PREDATADO     DATE,
+  CD_BANCO         NUMBER(4),
+  CD_AGENCIA       NUMBER(4),
+  NR_CONTA         NUMBER(10),
+  NR_CHEQUE        NUMBER(10),
+  NR_FECHAMENTO    NUMBER(10),
+  CD_OPERADOR      NUMBER(6) not null,
+  DT_TRANSACAO     DATE not null,
+  TP_DEBCRED       CHAR(1) not null,
+  NR_FECHACARTAO   NUMBER(7),
+  VL_LIQUIDOCARTAO NUMBER(14,2),
+  IN_DEVOLVECHQ    CHAR(1)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.FIN_LANCAMENTO
+  add constraint FIN_LANCAMENTOP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_RECIBO, NR_SEQUENCIA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table FIN_MOVTO
+prompt ========================
+prompt
+create table COMERCIAL_PRO.FIN_MOVTO
+(
+  CD_ORGANIZ    NUMBER(7) not null,
+  CD_EMPRESA    NUMBER(6) not null,
+  NR_LANCAMENTO NUMBER(10) not null,
+  U_VERSION     CHAR(1),
+  NR_PROCESSO   NUMBER(10) not null,
+  NR_SEQFAT     NUMBER(3) not null,
+  TP_MOEDA      VARCHAR2(3),
+  VL_OPERACAO   NUMBER(14,2),
+  DT_MOVTO      DATE,
+  TP_MOVTO      NUMBER(1),
+  VL_JURO       NUMBER(14,2),
+  VL_DESCONTO   NUMBER(14,2),
+  NR_RECIBO     NUMBER(10),
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.FIN_MOVTO
+  add constraint FIN_MOVTOP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_LANCAMENTO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table FIN_OPERACAO
+prompt ===========================
+prompt
+create table COMERCIAL_PRO.FIN_OPERACAO
+(
+  CD_ORGANIZ      NUMBER(7) not null,
+  CD_EMPRESA      NUMBER(6) not null,
+  CD_OPERACAO     NUMBER(7) not null,
+  U_VERSION       CHAR(1),
+  ID_OCC          NUMBER(8) not null,
+  CD_GRUPO        NUMBER(7) not null,
+  DS_OPERACAO     VARCHAR2(100),
+  CD_OPERADOR     NUMBER(6) not null,
+  DT_TRANSACAO    DATE not null,
+  IN_APRESENTADRE CHAR(1),
+  IN_FROTAMANUT   CHAR(1),
+  IN_CAPITAL      CHAR(1),
+  IN_RATEIO       CHAR(1)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.FIN_OPERACAO
+  add constraint FIN_OPERACAOP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_OPERACAO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.FIN_OPERACAO
+  add constraint FIN_OPERACAOC2 unique (CD_ORGANIZ, CD_EMPRESA, CD_GRUPO, CD_OPERACAO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table FIN_PROVISAO
+prompt ===========================
+prompt
+create table COMERCIAL_PRO.FIN_PROVISAO
+(
+  CD_ORGANIZ    NUMBER(7) not null,
+  CD_EMPRESA    NUMBER(6) not null,
+  NR_LANCAMENTO NUMBER(10) not null,
+  U_VERSION     CHAR(1),
+  ID_OCC        NUMBER(8) not null,
+  TP_OPERACAO   NUMBER(3),
+  DT_MOVTO      DATE,
+  VL_OPERACAO   NUMBER(14,2),
+  TP_DEBCRED    CHAR(1) not null,
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null,
+  DS_OBSERVA    VARCHAR2(200)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.FIN_PROVISAO
+  add constraint FIN_PROVISAOP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_LANCAMENTO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table FIN_SALDO
+prompt ========================
+prompt
+create table COMERCIAL_PRO.FIN_SALDO
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  TP_PAGAMENTO NUMBER(2) not null,
+  VL_SALDO     NUMBER(14,2)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.FIN_SALDO
+  add constraint FIN_SALDOP1 primary key (CD_ORGANIZ, CD_EMPRESA, TP_PAGAMENTO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table FROT_CORFROTA
+prompt ============================
+prompt
+create table COMERCIAL_PRO.FROT_CORFROTA
+(
+  CD_COR       NUMBER(7) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  DS_COR       VARCHAR2(100),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.FROT_CORFROTA
+  add constraint FROT_CORFROTAP1 primary key (CD_COR)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table FROT_FROTA
+prompt =========================
+prompt
+create table COMERCIAL_PRO.FROT_FROTA
+(
+  CD_ORGANIZ       NUMBER(7) not null,
+  CD_EMPRESA       NUMBER(6) not null,
+  NR_FROTA         NUMBER(6) not null,
+  U_VERSION        CHAR(1),
+  ID_OCC           CHAR(40),
+  CD_MODELO        NUMBER(4) not null,
+  CD_SUBGRUPO      NUMBER(3),
+  TP_MARCADOR      CHAR(1),
+  NR_MARCADOR      NUMBER(10),
+  NR_SEQMARCADOR   NUMBER(3) not null,
+  IN_ABASTECE      CHAR(1) not null,
+  NR_IMOBILIZADO   NUMBER(7),
+  CD_OPERADOR      NUMBER(6) not null,
+  DT_TRANSACAO     DATE not null,
+  NR_PLACA         VARCHAR2(7),
+  CD_COR           NUMBER(7),
+  NR_ANO           NUMBER(4),
+  QT_TROCAOLEO     NUMBER(10),
+  TP_FROTA         NUMBER(1),
+  CD_TRANSPORTADOR NUMBER(7),
+  QT_EIXO          NUMBER(2)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.FROT_FROTA
+  add constraint FROT_FROTAP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_FROTA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table FROT_GPOMANUT
+prompt ============================
+prompt
+create table COMERCIAL_PRO.FROT_GPOMANUT
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  CD_GPOMANUT  NUMBER(3) not null,
+  U_VERSION    CHAR(1),
+  DS_GPOMANUT  VARCHAR2(50) not null,
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.FROT_GPOMANUT
+  add constraint FROT_GPOMANUTP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_GPOMANUT)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table FROT_ITEMMANUT
+prompt =============================
+prompt
+create table COMERCIAL_PRO.FROT_ITEMMANUT
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  CD_ITEMMANUT NUMBER(7) not null,
+  U_VERSION    CHAR(1),
+  CD_GPOMANUT  NUMBER(3) not null,
+  DS_ITEMMANUT VARCHAR2(50) not null,
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.FROT_ITEMMANUT
+  add constraint FROT_ITEMMANUTP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_ITEMMANUT)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table FROT_MANUTPROG
+prompt =============================
+prompt
+create table COMERCIAL_PRO.FROT_MANUTPROG
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  CD_MODELO    NUMBER(4) not null,
+  NR_SEQUENCIA NUMBER(3) not null,
+  U_VERSION    CHAR(1),
+  TP_MARCADOR  VARCHAR2(2) not null,
+  QT_MARCADOR  NUMBER(15,4) not null,
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null,
+  QT_MARCAVISO NUMBER(15,4)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.FROT_MANUTPROG
+  add constraint FROT_MANUTPROGP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_MODELO, NR_SEQUENCIA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table FROT_MARCA
+prompt =========================
+prompt
+create table COMERCIAL_PRO.FROT_MARCA
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  CD_MARCA     NUMBER(7) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  DS_MARCA     VARCHAR2(100),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.FROT_MARCA
+  add constraint FROT_MARCAP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_MARCA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table FROT_MODELO
+prompt ==========================
+prompt
+create table COMERCIAL_PRO.FROT_MODELO
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  CD_MODELO    NUMBER(7) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  CD_TIPOFROTA NUMBER(7) not null,
+  CD_MARCA     NUMBER(7) not null,
+  DS_MODELO    VARCHAR2(100),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null,
+  TP_MARCADOR  CHAR(1)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.FROT_MODELO
+  add constraint FROT_MODELOP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_MODELO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table FROT_MPROGITEM
+prompt =============================
+prompt
+create table COMERCIAL_PRO.FROT_MPROGITEM
+(
+  CD_ORGANIZ    NUMBER(7) not null,
+  CD_EMPRESA    NUMBER(6) not null,
+  CD_MODELO     NUMBER(4) not null,
+  NR_SEQUENCIA  NUMBER(3) not null,
+  NR_SEQITEM    NUMBER(3) not null,
+  U_VERSION     CHAR(1),
+  CD_ITEMMANUT  NUMBER(7) not null,
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null,
+  DS_OBSERVACAO VARCHAR2(200)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.FROT_MPROGITEM
+  add constraint FROT_MPROGITEMP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_MODELO, NR_SEQUENCIA, NR_SEQITEM)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table FROT_ORDEMMANUT
+prompt ==============================
+prompt
+create table COMERCIAL_PRO.FROT_ORDEMMANUT
+(
+  CD_ORGANIZ    NUMBER(7) not null,
+  CD_EMPRESA    NUMBER(6) not null,
+  NR_FROTA      NUMBER(6) not null,
+  NR_ORDEM      NUMBER(7) not null,
+  U_VERSION     CHAR(1),
+  ID_OCC        NUMBER(8) not null,
+  CD_USUARIO    NUMBER(7),
+  DT_EMISSAO    DATE not null,
+  TP_MANUTENCAO NUMBER(2) not null,
+  ST_ORDEM      NUMBER(2) not null,
+  QT_MARCADOR   NUMBER(15,4) not null,
+  QT_MARCARECOM NUMBER(15,4) not null,
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null,
+  DS_OBSERVACAO VARCHAR2(500),
+  VL_MAOOBRA    NUMBER(12,2)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.FROT_ORDEMMANUT
+  add constraint FROT_ORDEMMANUTP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_FROTA, NR_ORDEM)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table FROT_OSITEM
+prompt ==========================
+prompt
+create table COMERCIAL_PRO.FROT_OSITEM
+(
+  CD_ORGANIZ    NUMBER(7) not null,
+  CD_EMPRESA    NUMBER(6) not null,
+  NR_FROTA      NUMBER(7) not null,
+  NR_ORDEM      NUMBER(7) not null,
+  NR_SEQITEM    NUMBER(3) not null,
+  U_VERSION     CHAR(1),
+  ID_OCC        NUMBER(8) not null,
+  CD_ITEMMANUT  NUMBER(7) not null,
+  IN_CANCELADO  CHAR(1) not null,
+  IN_IMPORFROTA CHAR(1) not null,
+  VL_ITEM       NUMBER(12,2) not null,
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null,
+  DS_OBSERVACAO VARCHAR2(500)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.FROT_OSITEM
+  add constraint FROT_OSITEMP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_FROTA, NR_ORDEM, NR_SEQITEM)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.FROT_OSITEM
+  add constraint FROT_OSITEMC2 unique (ID_OCC)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table FROT_TIPOFROTA
+prompt =============================
+prompt
+create table COMERCIAL_PRO.FROT_TIPOFROTA
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  CD_TIPOFROTA NUMBER(7) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  DS_TIPOFROTA VARCHAR2(100),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.FROT_TIPOFROTA
+  add constraint FROT_TIPOFROTAP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_TIPOFROTA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table FROT_TIPOFROTA_BKP
+prompt =================================
+prompt
+create table COMERCIAL_PRO.FROT_TIPOFROTA_BKP
+(
+  CD_TIPOFROTA NUMBER(7),
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  DS_TIPOFROTA VARCHAR2(100),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GCAD_AGENCIA
+prompt ===========================
+prompt
+create table COMERCIAL_PRO.GCAD_AGENCIA
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  CD_BANCO     NUMBER(4) not null,
+  CD_AGENCIA   NUMBER(4) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  NM_AGENCIA   VARCHAR2(50),
+  DV_AGENCIA   CHAR(1),
+  CD_MUNICIPIO NUMBER(6) not null,
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null,
+  NM_GERENTE   VARCHAR2(40),
+  DS_EMAIL     VARCHAR2(200),
+  DS_SITE      VARCHAR2(200)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GCAD_AGENCIA
+  add constraint GCAD_AGENCIAP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_BANCO, CD_AGENCIA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GCAD_BANCO
+prompt =========================
+prompt
+create table COMERCIAL_PRO.GCAD_BANCO
+(
+  CD_BANCO     NUMBER(4) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  DS_BANCO     VARCHAR2(100) not null,
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null,
+  CD_FEBRABAN  NUMBER(4),
+  NR_CPFCNPJ   CHAR(14)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GCAD_BANCO
+  add constraint GCAD_BANCOP1 primary key (CD_BANCO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GCAD_COR
+prompt =======================
+prompt
+create table COMERCIAL_PRO.GCAD_COR
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  CD_COR       NUMBER(7) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  DS_COR       VARCHAR2(100),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GCAD_COR
+  add constraint GCAD_CORP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_COR)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GCAD_CTABANCO
+prompt ============================
+prompt
+create table COMERCIAL_PRO.GCAD_CTABANCO
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  CD_BANCO     NUMBER(4) not null,
+  CD_AGENCIA   NUMBER(4) not null,
+  NR_CONTA     NUMBER(10) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  TP_MOEDA     VARCHAR2(3),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GCAD_CTABANCO
+  add constraint GCAD_CTABANCOP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_BANCO, CD_AGENCIA, NR_CONTA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GCAD_DEPENDENTE
+prompt ==============================
+prompt
+create table COMERCIAL_PRO.GCAD_DEPENDENTE
+(
+  CD_ORGANIZ    NUMBER(7) not null,
+  CD_EMPRESA    NUMBER(6) not null,
+  CD_PARCEIRO   NUMBER(7) not null,
+  NR_SEQUENCIA  NUMBER(3) not null,
+  U_VERSION     CHAR(1),
+  ID_OCC        NUMBER(8) not null,
+  DS_NOME       VARCHAR2(40),
+  TP_PARENTESCO NUMBER(2),
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null,
+  DS_OBSERVA    VARCHAR2(200)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GCAD_DEPENDENTE
+  add constraint GCAD_DEPENDENTEP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_PARCEIRO, NR_SEQUENCIA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GCAD_DOCUMENTO
+prompt =============================
+prompt
+create table COMERCIAL_PRO.GCAD_DOCUMENTO
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  CD_PARCEIRO  NUMBER(7) not null,
+  CD_TPDOCTO   NUMBER(7) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  DS_DOCUMENTO VARCHAR2(20),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GCAD_DOCUMENTO
+  add constraint GCAD_DOCUMENTOP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_PARCEIRO, CD_TPDOCTO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GCAD_ENDERECO
+prompt ============================
+prompt
+create table COMERCIAL_PRO.GCAD_ENDERECO
+(
+  CD_ORGANIZ     NUMBER(7) not null,
+  CD_EMPRESA     NUMBER(6) not null,
+  CD_PARCEIRO    NUMBER(7) not null,
+  NR_SEQUENCIA   NUMBER(3) not null,
+  U_VERSION      CHAR(1),
+  ID_OCC         NUMBER(8) not null,
+  DS_ENDERECO    VARCHAR2(100),
+  NR_ENDERECO    VARCHAR2(5),
+  DS_BAIRRO      VARCHAR2(100),
+  DS_COMPLEMENTO VARCHAR2(100),
+  NR_CEP         NUMBER(10),
+  CD_MUNICIPIO   NUMBER(7) not null,
+  CD_OPERADOR    NUMBER(6) not null,
+  DT_TRANSACAO   DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GCAD_ENDERECO
+  add constraint GCAD_ENDERECOP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_PARCEIRO, NR_SEQUENCIA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GCAD_FONE
+prompt ========================
+prompt
+create table COMERCIAL_PRO.GCAD_FONE
+(
+  CD_ORGANIZ       NUMBER(7) not null,
+  CD_EMPRESA       NUMBER(6) not null,
+  CD_PARCEIRO      NUMBER(7) not null,
+  NR_SEQUENCIA     NUMBER(3) not null,
+  U_VERSION        CHAR(1),
+  ID_OCC           NUMBER(8) not null,
+  NR_INTERNACIONAL NUMBER(4),
+  NR_DDD           NUMBER(3),
+  NR_FONE          NUMBER(12),
+  CD_OPERADOR      NUMBER(6) not null,
+  DT_TRANSACAO     DATE not null,
+  NM_PESSOA        VARCHAR2(40),
+  DS_EMAIL         VARCHAR2(40),
+  DS_OBSERVA       VARCHAR2(200)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GCAD_FONE
+  add constraint GCAD_FONEP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_PARCEIRO, NR_SEQUENCIA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GCAD_MUNICIPIO
+prompt =============================
+prompt
+create table COMERCIAL_PRO.GCAD_MUNICIPIO
+(
+  CD_MUNICIPIO NUMBER(6),
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  CD_PAIS      NUMBER(4) not null,
+  CD_UF        CHAR(2) not null,
+  NM_MUNICIPIO VARCHAR2(50),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null,
+  CD_IBGE      NUMBER(10)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GCAD_NACIONALIDADE
+prompt =================================
+prompt
+create table COMERCIAL_PRO.GCAD_NACIONALIDADE
+(
+  CD_NACIONALIDADE NUMBER(7) not null,
+  U_VERSION        CHAR(1),
+  ID_OCC           NUMBER(8) not null,
+  DS_NACIONALIDADE VARCHAR2(60) not null,
+  CD_OPERADOR      NUMBER(6) not null,
+  DT_TRANSACAO     DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GCAD_NACIONALIDADE
+  add constraint GCAD_NACIONALIDADEP1 primary key (CD_NACIONALIDADE)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GCAD_NATOP
+prompt =========================
+prompt
+create table COMERCIAL_PRO.GCAD_NATOP
+(
+  CD_NATOP     NUMBER(7) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  TP_NATOP     NUMBER(7) not null,
+  DS_NATOP     VARCHAR2(100),
+  TP_MOVTO     CHAR(1),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GCAD_NATOP
+  add constraint GCAD_NATOPP1 primary key (CD_NATOP)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GCAD_PAIS
+prompt ========================
+prompt
+create table COMERCIAL_PRO.GCAD_PAIS
+(
+  CD_PAIS      NUMBER(7),
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  NM_PAIS      VARCHAR2(40),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GCAD_PESSOA
+prompt ==========================
+prompt
+create table COMERCIAL_PRO.GCAD_PESSOA
+(
+  CD_ORGANIZ       NUMBER(7) not null,
+  CD_EMPRESA       NUMBER(6) not null,
+  CD_PARCEIRO      NUMBER(7) not null,
+  U_VERSION        CHAR(1),
+  ID_OCC           NUMBER(8) not null,
+  NM_PESSOA        VARCHAR2(40) not null,
+  DT_NASCIMENTO    DATE,
+  TP_SEXO          NUMBER(1),
+  NM_PAI           VARCHAR2(40),
+  NM_MAE           VARCHAR2(40),
+  CD_NATURALIDADE  NUMBER(5),
+  CD_NACIONALIDADE NUMBER(7),
+  CD_OPERADOR      NUMBER(6) not null,
+  DT_TRANSACAO     DATE not null,
+  NR_CPFCNPJ       CHAR(14),
+  TP_PESSOA        NUMBER(1),
+  NM_APELIDO       VARCHAR2(100),
+  NM_FANTASIA      VARCHAR2(100),
+  DS_OBSERVA       VARCHAR2(200),
+  TP_PARCEIRO      NUMBER(1),
+  IN_CANCELADO     CHAR(1)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GCAD_PESSOA
+  add constraint GCAD_PESSOAP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_PARCEIRO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GCAD_PROFISSAO
+prompt =============================
+prompt
+create table COMERCIAL_PRO.GCAD_PROFISSAO
+(
+  CD_PROFISSAO NUMBER(3) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  DS_PROFISSAO VARCHAR2(60),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GCAD_PROFISSAO
+  add constraint GCAD_PROFISSAOP1 primary key (CD_PROFISSAO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GCAD_TPDOCTO
+prompt ===========================
+prompt
+create table COMERCIAL_PRO.GCAD_TPDOCTO
+(
+  CD_TPDOCTO   NUMBER(7) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  DS_TPDOCTO   VARCHAR2(100),
+  CD_PAIS      NUMBER(4) not null,
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GCAD_TPDOCTO
+  add constraint GCAD_TPDOCTOP1 primary key (CD_TPDOCTO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GCAD_TPNATOP
+prompt ===========================
+prompt
+create table COMERCIAL_PRO.GCAD_TPNATOP
+(
+  TP_NATOP     NUMBER(7) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  DS_TPNATOP   VARCHAR2(100),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GCAD_TPNATOP
+  add constraint GCAD_TPNATOPP1 primary key (TP_NATOP)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GCAD_UF
+prompt ======================
+prompt
+create table COMERCIAL_PRO.GCAD_UF
+(
+  CD_PAIS      NUMBER(4),
+  CD_UF        CHAR(2),
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  NM_UF        VARCHAR2(30),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GDOC_BASE
+prompt ========================
+prompt
+create table COMERCIAL_PRO.GDOC_BASE
+(
+  CD_ORGANIZ    NUMBER(7) not null,
+  CD_EMPRESA    NUMBER(6) not null,
+  NR_PROCESSO   NUMBER(10) not null,
+  U_VERSION     CHAR(1),
+  CD_TIPODOCTO  NUMBER(7) not null,
+  CD_PARCEIRO   NUMBER(7),
+  NR_NOTA       NUMBER(10),
+  CD_SERIE      VARCHAR2(5),
+  DT_DOCTO      DATE not null,
+  DT_MOVTO      DATE not null,
+  TP_MOEDA      VARCHAR2(3) not null,
+  TP_MOVTO      CHAR(1) not null,
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null,
+  DT_CANCELADO  DATE,
+  TP_FORMAPAGTO NUMBER(1),
+  VL_TOTAL      NUMBER(14,2),
+  DS_OBSERVA    VARCHAR2(600),
+  ID_NOTA       NUMBER(10),
+  NR_PEDIDO     NUMBER(7),
+  NR_TIMBRADO   NUMBER(10),
+  NR_INIFATURA  NUMBER(6),
+  VL_EXENTAS    NUMBER(14,2),
+  VL_IVA05      NUMBER(14,2),
+  VL_IVA10      NUMBER(14,2),
+  VL_GRAVADAS05 NUMBER(14,2),
+  VL_GRAVADAS10 NUMBER(14,2)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GDOC_BASE
+  add constraint GDOC_BASEP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_PROCESSO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GDOC_CFOP
+prompt ========================
+prompt
+create table COMERCIAL_PRO.GDOC_CFOP
+(
+  CD_CFOP      NUMBER(4),
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  NM_CFOP      VARCHAR2(400),
+  DS_CFOP      VARCHAR2(1000),
+  CD_GRUPOCFOP NUMBER(4),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GDOC_CONDPAGTO
+prompt =============================
+prompt
+create table COMERCIAL_PRO.GDOC_CONDPAGTO
+(
+  CD_CONDPAGTO NUMBER(7) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  NM_CONDPAGTO VARCHAR2(60),
+  TP_CONDPAGTO NUMBER(1),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GDOC_CONDPAGTO
+  add constraint GDOC_CONDPAGTOP1 primary key (CD_CONDPAGTO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GDOC_CONDPAGTOP
+prompt ==============================
+prompt
+create table COMERCIAL_PRO.GDOC_CONDPAGTOP
+(
+  CD_CONDPAGTO   NUMBER(7) not null,
+  CD_PARCELA     NUMBER(3) not null,
+  U_VERSION      CHAR(1),
+  ID_OCC         NUMBER(8) not null,
+  QT_DIASPARCELA NUMBER(4),
+  CD_OPERADOR    NUMBER(6) not null,
+  DT_TRANSACAO   DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GDOC_CONDPAGTOP
+  add constraint GDOC_CONDPAGTOPP1 primary key (CD_CONDPAGTO, CD_PARCELA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GDOC_ITEM
+prompt ========================
+prompt
+create table COMERCIAL_PRO.GDOC_ITEM
+(
+  CD_ORGANIZ     NUMBER(7) not null,
+  CD_EMPRESA     NUMBER(6) not null,
+  NR_PROCESSO    NUMBER(10) not null,
+  NR_SEQUENCIA   NUMBER(3) not null,
+  U_VERSION      CHAR(1),
+  CD_ITEM        NUMBER(10),
+  CD_OPERACAO    NUMBER(7),
+  QT_ITEM        NUMBER(18,6),
+  VL_UNITARIO    NUMBER(18,6),
+  VL_TOTAL       NUMBER(14,2),
+  CD_OPERADOR    NUMBER(6) not null,
+  DT_TRANSACAO   DATE not null,
+  NR_FROTA       NUMBER(6),
+  CD_FUNCIO      NUMBER(7),
+  NR_IMOBILIZADO NUMBER(7),
+  NR_EMPREEND    NUMBER(7),
+  CD_ARMAZEM     NUMBER(3),
+  VL_EXENTAS     NUMBER(14,2),
+  VL_IVA05       NUMBER(14,2),
+  VL_IVA10       NUMBER(14,2),
+  VL_GRAVADAS05  NUMBER(14,2),
+  VL_GRAVADAS10  NUMBER(14,2)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GDOC_ITEM
+  add constraint GDOC_ITEMP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_PROCESSO, NR_SEQUENCIA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GDOC_ITEM_BKP
+prompt ============================
+prompt
+create table COMERCIAL_PRO.GDOC_ITEM_BKP
+(
+  CD_ORGANIZ     NUMBER(7),
+  CD_EMPRESA     NUMBER(6),
+  NR_PROCDOCTO   NUMBER(10),
+  NR_SEQUENCIA   NUMBER(3),
+  U_VERSION      CHAR(1),
+  CD_ITEM        NUMBER(10),
+  CD_OPERACAO    NUMBER(7),
+  QT_ITEM        NUMBER(18,6),
+  VL_UNITARIO    NUMBER(18,6),
+  VL_TOTAL       NUMBER(14,2),
+  CD_OPERADOR    NUMBER(6) not null,
+  DT_TRANSACAO   DATE not null,
+  PE_IVA         NUMBER(3),
+  NR_FROTA       NUMBER(6),
+  CD_FUNCIO      NUMBER(7),
+  NR_IMOBILIZADO NUMBER(7)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GDOC_NFBASE
+prompt ==========================
+prompt
+create table COMERCIAL_PRO.GDOC_NFBASE
+(
+  CD_ORGANIZ     NUMBER(7) not null,
+  CD_EMPRESA     NUMBER(6) not null,
+  ID_NOTA        NUMBER(10) not null,
+  U_VERSION      CHAR(1),
+  CD_PARCEIRO    NUMBER(7),
+  NR_NOTA        NUMBER(10),
+  CD_SERIE       VARCHAR2(5),
+  TP_NOTA        CHAR(1),
+  TP_MODELONF    NUMBER(2),
+  DT_MOVTO       DATE,
+  DT_EMISSAO     DATE not null,
+  DT_SAIDA       DATE not null,
+  TP_FINALIDADE  NUMBER(2),
+  TP_CONSFINAL   NUMBER(1),
+  TP_MODALFRETE  NUMBER(2),
+  CD_CONDPAGTO   NUMBER(7),
+  CD_CAIXA       NUMBER(7) not null,
+  CD_OPERADOR    NUMBER(6) not null,
+  DT_TRANSACAO   DATE not null,
+  ST_STATUS      NUMBER(2),
+  NR_CPFCNPJ     CHAR(14),
+  CD_OPCANCELADO NUMBER(6),
+  DT_CANCELADO   DATE,
+  DS_INFOADIC    VARCHAR2(1000)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GDOC_NFBASE
+  add constraint GDOC_NFBASEP1 primary key (CD_ORGANIZ, CD_EMPRESA, ID_NOTA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GDOC_NFDEVBASE
+prompt =============================
+prompt
+create table COMERCIAL_PRO.GDOC_NFDEVBASE
+(
+  CD_ORGANIZ NUMBER(7) not null,
+  CD_EMPRESA NUMBER(6) not null,
+  ID_NOTA    NUMBER(10) not null,
+  NR_SEQDEV  NUMBER(3) not null,
+  U_VERSION  CHAR(1),
+  DT_MOVTO   DATE
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GDOC_NFDEVBASE
+  add constraint GDOC_NFDEVBASEP1 primary key (CD_ORGANIZ, CD_EMPRESA, ID_NOTA, NR_SEQDEV)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GDOC_NFDEVITEM
+prompt =============================
+prompt
+create table COMERCIAL_PRO.GDOC_NFDEVITEM
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  ID_NOTA      NUMBER(10) not null,
+  NR_SEQDEV    NUMBER(3) not null,
+  NR_SEQNFPROD NUMBER(3) not null,
+  U_VERSION    CHAR(1),
+  CD_PRODUTO   NUMBER(6) not null,
+  QT_PRODUTO   NUMBER(14,2),
+  VL_UNITARIO  NUMBER(14,2),
+  VL_TOTAL     NUMBER(14,2)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GDOC_NFDEVITEM
+  add constraint GDOC_NFDEVITEMP1 primary key (CD_ORGANIZ, CD_EMPRESA, ID_NOTA, NR_SEQDEV, NR_SEQNFPROD)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GDOC_NFITEM
+prompt ==========================
+prompt
+create table COMERCIAL_PRO.GDOC_NFITEM
+(
+  CD_ORGANIZ    NUMBER(7) not null,
+  CD_EMPRESA    NUMBER(6) not null,
+  ID_NOTA       NUMBER(10) not null,
+  NR_SEQNFPROD  NUMBER(3) not null,
+  U_VERSION     CHAR(1),
+  CD_PRODUTO    NUMBER(10) not null,
+  CD_CFOP       NUMBER(4),
+  QT_PRODUTO    NUMBER(14,2) not null,
+  VL_UNITARIO   NUMBER(14,2) not null,
+  VL_TOTAL      NUMBER(14,2) not null,
+  IN_EXCLUIDO   CHAR(1) not null,
+  VL_FRETE      NUMBER(14,2),
+  VL_SEGURO     NUMBER(14,2),
+  VL_DESCONTO   NUMBER(14,2),
+  VL_OUTRO      NUMBER(14,2),
+  VL_APROXTRIB  NUMBER(14,2),
+  DS_INFOADIC   VARCHAR2(1000),
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null,
+  VL_CUSTOMEDIO NUMBER(14,2)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GDOC_NFITEM
+  add constraint GDOC_NFITEMP1 primary key (CD_ORGANIZ, CD_EMPRESA, ID_NOTA, NR_SEQNFPROD)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GDOC_NFPAGAMENTO
+prompt ===============================
+prompt
+create table COMERCIAL_PRO.GDOC_NFPAGAMENTO
+(
+  CD_ORGANIZ      NUMBER(7) not null,
+  CD_EMPRESA      NUMBER(6) not null,
+  ID_NOTA         NUMBER(10) not null,
+  NR_SEQPAGAMENTO NUMBER(3) not null,
+  U_VERSION       CHAR(1),
+  TP_PAGAMENTO    NUMBER(2),
+  VL_PAGAMENTO    NUMBER(14,2),
+  TP_BANDCARTAO   NUMBER(2),
+  NR_CNPJCARTAO   CHAR(14),
+  NR_AUTORCARTAO  VARCHAR2(20),
+  CD_OPERADOR     NUMBER(6) not null,
+  DT_TRANSACAO    DATE not null,
+  DT_VENCTOCARTAO DATE,
+  VL_DESCONTO     NUMBER(14,2)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GDOC_NFPAGAMENTO
+  add constraint GDOC_NFPAGAMENTOP1 primary key (CD_ORGANIZ, CD_EMPRESA, ID_NOTA, NR_SEQPAGAMENTO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GDOC_PEDIDO
+prompt ==========================
+prompt
+create table COMERCIAL_PRO.GDOC_PEDIDO
+(
+  CD_ORGANIZ     NUMBER(7) not null,
+  CD_EMPRESA     NUMBER(6) not null,
+  NR_PEDIDO      NUMBER(7) not null,
+  U_VERSION      CHAR(1),
+  ID_OCC         NUMBER(8) not null,
+  DT_EMISSAO     DATE not null,
+  CD_FORNECEDOR  NUMBER(7) not null,
+  CD_USUARIO     NUMBER(7) not null,
+  CD_PROPRIEDADE NUMBER(7) not null,
+  ST_PEDIDO      NUMBER(2) not null,
+  CD_OPERADOR    NUMBER(6) not null,
+  DT_TRANSACAO   DATE not null,
+  DS_OBSERVACAO  VARCHAR2(1000),
+  CD_CULTURA     NUMBER(3)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GDOC_PEDIDO
+  add constraint GDOC_PEDIDOP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_PEDIDO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GDOC_PEDIDO
+  add constraint GDOC_PEDIDOC2 unique (ID_OCC)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GDOC_PEDITEM
+prompt ===========================
+prompt
+create table COMERCIAL_PRO.GDOC_PEDITEM
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  NR_PEDIDO    NUMBER(7) not null,
+  CD_PRODUTO   NUMBER(6) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  QT_PRODUTO   NUMBER(10,2) not null,
+  VL_PRODUTO   NUMBER(10,2) not null,
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GDOC_PEDITEM
+  add constraint GDOC_PEDITEMP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_PEDIDO, CD_PRODUTO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GDOC_PEDITEM
+  add constraint GDOC_PEDITEMC2 unique (ID_OCC)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GDOC_PEDITEMRECEB
+prompt ================================
+prompt
+create table COMERCIAL_PRO.GDOC_PEDITEMRECEB
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  NR_PEDIDO    NUMBER(7) not null,
+  CD_PRODUTO   NUMBER(6) not null,
+  NR_SEQUENCIA NUMBER(3) not null,
+  U_VERSION    CHAR(1),
+  QT_PRODUTO   NUMBER(10,2) not null,
+  CD_ARMAZEM   NUMBER(3) not null,
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null,
+  NR_PROCESSO  NUMBER(10),
+  NR_ITEMDOCTO NUMBER(3)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GDOC_PEDITEMRECEB
+  add constraint GDOC_PEDITEMRECEBP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_PEDIDO, CD_PRODUTO, NR_SEQUENCIA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GDOC_TIPODOCTO
+prompt =============================
+prompt
+create table COMERCIAL_PRO.GDOC_TIPODOCTO
+(
+  CD_TIPODOCTO   NUMBER(7) not null,
+  U_VERSION      CHAR(1),
+  ID_OCC         NUMBER(8) not null,
+  DS_TIPODOCTO   VARCHAR2(100),
+  CD_OPERADOR    NUMBER(6) not null,
+  DT_TRANSACAO   DATE not null,
+  TP_MOVTO       CHAR(1),
+  IN_ESTOQUE     CHAR(1) not null,
+  IN_ITEM        CHAR(1) not null,
+  IN_FINANCEIRO  CHAR(1) not null,
+  TP_DEBCRED     CHAR(1) not null,
+  IN_ABASTECE    CHAR(1) not null,
+  IN_CAMBIO      CHAR(1) not null,
+  IN_FUNCIO      CHAR(1) not null,
+  IN_IMOBILIZADO CHAR(1),
+  IN_PNEU        CHAR(1)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GDOC_TIPODOCTO
+  add constraint GDOC_TIPODOCTOP1 primary key (CD_TIPODOCTO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GPRD_ABASTECE
+prompt ============================
+prompt
+create table COMERCIAL_PRO.GPRD_ABASTECE
+(
+  CD_ORGANIZ      NUMBER(7) not null,
+  CD_EMPRESA      NUMBER(6) not null,
+  NR_LANCAMENTO   NUMBER(7) not null,
+  U_VERSION       CHAR(1),
+  NR_PROCDOCTO    NUMBER(10),
+  CD_PARCEIRO     NUMBER(7),
+  DT_MOVTO        DATE,
+  NR_TIMBRADO     VARCHAR2(20),
+  NR_XFATURA      NUMBER(6),
+  NR_FATURA       NUMBER(7),
+  DT_DOCTO        DATE,
+  TP_MOEDA        VARCHAR2(3),
+  VL_OPERACAO     NUMBER(14,2),
+  NR_FROTA        NUMBER(6) not null,
+  QT_LITROS       NUMBER(8,4),
+  NR_MARCADOR     NUMBER(9,1),
+  NR_SEQMARCADOR  NUMBER(2),
+  CD_OPERADOR     NUMBER(6) not null,
+  DT_TRANSACAO    DATE not null,
+  CD_PRODUTO      NUMBER(6),
+  CD_ARMAZEM      NUMBER(3),
+  CD_OPECANCELADO NUMBER(6),
+  DT_CANCELADO    DATE
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GPRD_ABASTECE
+  add constraint GPRD_ABASTECEP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_LANCAMENTO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GPRD_ARMAZEM
+prompt ===========================
+prompt
+create table COMERCIAL_PRO.GPRD_ARMAZEM
+(
+  CD_ORGANIZ     NUMBER(7) not null,
+  CD_EMPRESA     NUMBER(6) not null,
+  CD_ARMAZEM     NUMBER(3) not null,
+  U_VERSION      CHAR(1),
+  ID_OCC         NUMBER(8) not null,
+  DS_ARMAZEM     VARCHAR2(60),
+  CD_OPERADOR    NUMBER(6) not null,
+  DT_TRANSACAO   DATE not null,
+  CD_PROPRIEDADE NUMBER(7)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GPRD_ARMAZEM
+  add constraint GPRD_ARMAZEMP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_ARMAZEM)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GPRD_COLECAO
+prompt ===========================
+prompt
+create table COMERCIAL_PRO.GPRD_COLECAO
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  NR_COLECAO   NUMBER(10) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  NM_COLECAO   VARCHAR2(50),
+  DT_INICIO    DATE,
+  DT_FIM       DATE,
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GPRD_COLECAO
+  add constraint GPRD_COLECAOP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_COLECAO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GPRD_CONVERTEUND
+prompt ===============================
+prompt
+create table COMERCIAL_PRO.GPRD_CONVERTEUND
+(
+  CD_UNDORIGEM  NUMBER(7) not null,
+  CD_UNDDESTINO NUMBER(7) not null,
+  U_VERSION     CHAR(1),
+  ID_OCC        NUMBER(8) not null,
+  VL_CONVERSAO  NUMBER(14,2),
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GPRD_CONVERTEUND
+  add constraint GPRD_CONVERTEUNDP1 primary key (CD_UNDORIGEM, CD_UNDDESTINO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GPRD_EMBALAGEM
+prompt =============================
+prompt
+create table COMERCIAL_PRO.GPRD_EMBALAGEM
+(
+  CD_EMBALAGEM    VARCHAR2(10) not null,
+  QT_PRDEMBALAGEM NUMBER(12,3) not null,
+  CD_UNDPADRAO    VARCHAR2(10) not null,
+  U_VERSION       CHAR(1),
+  ID_OCC          NUMBER(8) not null,
+  CD_OPERADOR     NUMBER(6) not null,
+  DT_TRANSACAO    DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GPRD_ESTQATUAL
+prompt =============================
+prompt
+create table COMERCIAL_PRO.GPRD_ESTQATUAL
+(
+  CD_ORGANIZ    NUMBER(7) not null,
+  CD_EMPRESA    NUMBER(6) not null,
+  CD_PRODUTO    NUMBER(6) not null,
+  CD_ARMAZEM    NUMBER(3) not null,
+  U_VERSION     CHAR(1),
+  QT_FISICO     NUMBER(18,6),
+  VL_CUSTOMEDIO NUMBER(18,6),
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null,
+  QT_CONSIGNADO NUMBER(14,2)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GPRD_ESTQATUAL
+  add constraint GPRD_ESTQATUALP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_PRODUTO, CD_ARMAZEM)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GPRD_ESTQMOVTO
+prompt =============================
+prompt
+create table COMERCIAL_PRO.GPRD_ESTQMOVTO
+(
+  CD_ORGANIZ     NUMBER(7) not null,
+  CD_EMPRESA     NUMBER(6) not null,
+  CD_PRODUTO     NUMBER(6) not null,
+  CD_ARMAZEM     NUMBER(3) not null,
+  NR_LANCAMENTO  NUMBER(7) not null,
+  U_VERSION      CHAR(1),
+  DT_MOVTO       DATE,
+  QT_OPERACAO    NUMBER(18,6),
+  VL_OPERACAO    NUMBER(14,2),
+  VL_UNITARIO    NUMBER(14,2),
+  VL_CUSTOMEDIO  NUMBER(18,6),
+  TP_AJUSTE      NUMBER(2),
+  NM_COMPONENTE  VARCHAR2(16),
+  CD_OPERADOR    NUMBER(6) not null,
+  DT_TRANSACAO   DATE not null,
+  TP_NATOP       NUMBER(7),
+  CD_NATOP       NUMBER(7),
+  CD_CFOP        NUMBER(4),
+  NR_PROCESSO    NUMBER(10),
+  NR_SEQPROCESSO NUMBER(3),
+  ID_NOTA        NUMBER(10),
+  NR_SEQNFPROD   NUMBER(3),
+  NR_ORDEM       NUMBER(10),
+  NR_SEQORDEM    NUMBER(3),
+  DS_OBSERVA     VARCHAR2(200),
+  TP_MOEDA       VARCHAR2(3)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GPRD_ESTQMOVTO
+  add constraint GPRD_ESTQMOVTOP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_PRODUTO, CD_ARMAZEM, NR_LANCAMENTO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GPRD_GRUPO
+prompt =========================
+prompt
+create table COMERCIAL_PRO.GPRD_GRUPO
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  CD_GRUPO     NUMBER(7) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  CD_PERFIL    NUMBER(7) not null,
+  DS_GRUPO     VARCHAR2(100),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GPRD_GRUPO
+  add constraint GPRD_GRUPOP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_GRUPO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GPRD_MARCA
+prompt =========================
+prompt
+create table COMERCIAL_PRO.GPRD_MARCA
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  CD_MARCA     NUMBER(8) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  DS_MARCA     VARCHAR2(100),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GPRD_MARCA
+  add constraint GPRD_MARCAP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_MARCA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GPRD_NCM
+prompt =======================
+prompt
+create table COMERCIAL_PRO.GPRD_NCM
+(
+  CD_NCM       VARCHAR2(12) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  DS_NCM       VARCHAR2(100),
+  PE_IPI       NUMBER(5,2),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GPRD_NCM
+  add constraint GPRD_NCMP1 primary key (CD_NCM)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GPRD_ORIGEMMERC
+prompt ==============================
+prompt
+create table COMERCIAL_PRO.GPRD_ORIGEMMERC
+(
+  CD_ORIGEMMERC NUMBER(7) not null,
+  U_VERSION     CHAR(1),
+  ID_OCC        NUMBER(8) not null,
+  DS_ORIGEMMERC VARCHAR2(200),
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GPRD_ORIGEMMERC
+  add constraint GPRD_ORIGEMMERCP1 primary key (CD_ORIGEMMERC)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GPRD_PERFIL
+prompt ==========================
+prompt
+create table COMERCIAL_PRO.GPRD_PERFIL
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  CD_PERFIL    NUMBER(7) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  DS_PERFIL    VARCHAR2(100),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GPRD_PERFIL
+  add constraint GPRD_PERFILP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_PERFIL)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GPRD_PRODUTO
+prompt ===========================
+prompt
+create table COMERCIAL_PRO.GPRD_PRODUTO
+(
+  CD_ORGANIZ     NUMBER(7) not null,
+  CD_EMPRESA     NUMBER(6) not null,
+  CD_PRODUTO     NUMBER(6) not null,
+  U_VERSION      CHAR(1),
+  ID_OCC         NUMBER(8) not null,
+  CD_PRDESTRUT   VARCHAR2(20),
+  CD_BARRA       VARCHAR2(20),
+  DS_PRODUTO     VARCHAR2(100),
+  CD_CFOP        NUMBER(4),
+  CD_NCM         VARCHAR2(12),
+  NR_EXTIPI      NUMBER(8),
+  CD_UNDVENDA    NUMBER(7),
+  CD_UNDCOMPRA   NUMBER(7),
+  CD_UNDPADRAO   NUMBER(7),
+  CD_GRUPO       NUMBER(7),
+  CD_SUBGRUPO    NUMBER(7),
+  CD_ORIGEMMERC  NUMBER(7),
+  IN_ATIVO       CHAR(1) not null,
+  VL_VENDA       NUMBER(14,2),
+  VL_MINIMO      NUMBER(14,2),
+  NR_FCI         VARCHAR2(40),
+  CD_OPERADOR    NUMBER(6) not null,
+  DT_TRANSACAO   DATE not null,
+  TP_COMBUSTIVEL NUMBER(1),
+  DS_INFOADIC    VARCHAR2(1000),
+  CD_MARCA       NUMBER(8),
+  QT_RESIDUAL    NUMBER(3),
+  DS_CODFORNEC   VARCHAR2(20),
+  NR_COLECAO     NUMBER(7),
+  TP_IVA         NUMBER(3),
+  DS_VARIANTE    VARCHAR2(100),
+  DS_CORPRODUTO  VARCHAR2(100)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GPRD_PRODUTO
+  add constraint GPRD_PRODUTOP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_PRODUTO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GPRD_PRODUTOIMP
+prompt ==============================
+prompt
+create table COMERCIAL_PRO.GPRD_PRODUTOIMP
+(
+  CD_ORGANIZ     NUMBER(7) not null,
+  CD_EMPRESA     NUMBER(6) not null,
+  CD_PRODUTO     NUMBER(6) not null,
+  U_VERSION      CHAR(1),
+  ID_OCC         NUMBER(8) not null,
+  PE_ICMS        NUMBER(5,2),
+  PE_ICMSST      NUMBER(5,2),
+  PE_REDBCICMS   NUMBER(5,2),
+  PE_REDBCICMSST NUMBER(5,2),
+  PE_IPI         NUMBER(5,2),
+  PE_MVA         NUMBER(5,2),
+  CD_CSTICMS     NUMBER(7),
+  CD_CSTIPI      NUMBER(7),
+  CD_CSTPIS      NUMBER(7),
+  CD_CSTCOFINS   NUMBER(7),
+  CD_CSOSN       NUMBER(7),
+  CD_OPERADOR    NUMBER(6) not null,
+  DT_TRANSACAO   DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GPRD_PRODUTOIMP
+  add constraint GPRD_PRODUTOIMPP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_PRODUTO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GPRD_TABPRECO
+prompt ============================
+prompt
+create table COMERCIAL_PRO.GPRD_TABPRECO
+(
+  ID            NUMBER(7) not null,
+  U_VERSION     CHAR(1),
+  NR_TABELA     NUMBER(7),
+  CD_BARRA      VARCHAR2(20),
+  DS_CODFORNEC  VARCHAR2(100),
+  DS_VARIANTE   VARCHAR2(100),
+  VL_PRECO      NUMBER(14,2),
+  DS_PRODUTO    VARCHAR2(100),
+  DS_CORPRODUTO VARCHAR2(100)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GPRD_TABPRECO
+  add constraint GPRD_TABPRECOP1 primary key (ID)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table GPRD_UNDMEDIDA
+prompt =============================
+prompt
+create table COMERCIAL_PRO.GPRD_UNDMEDIDA
+(
+  CD_UNDMEDIDA NUMBER(7) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  DS_UNDMEDIDA VARCHAR2(60),
+  CD_SIGLA     VARCHAR2(10),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.GPRD_UNDMEDIDA
+  add constraint GPRD_UNDMEDIDAP1 primary key (CD_UNDMEDIDA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table IMOB_EMPREEND
+prompt ============================
+prompt
+create table COMERCIAL_PRO.IMOB_EMPREEND
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(7) not null,
+  NR_EMPREEND  NUMBER(10) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  DS_EMPREEND  VARCHAR2(100),
+  DS_ENDERECO  VARCHAR2(100),
+  QT_TAMANHO   NUMBER(5,2),
+  CD_CLIENTE   NUMBER(7),
+  VL_NEGOCIADO NUMBER(14,2),
+  DT_INICIO    DATE,
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null,
+  DS_OBSERVA   VARCHAR2(300),
+  DT_ENCERRA   DATE,
+  QT_UNIDADE   NUMBER(3)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.IMOB_EMPREEND
+  add constraint IMOB_EMPREENDP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_EMPREEND)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table IMOB_EMPREENDCUST
+prompt ================================
+prompt
+create table COMERCIAL_PRO.IMOB_EMPREENDCUST
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  NR_EMPREEND  NUMBER(7) not null,
+  NR_SEQUENCIA NUMBER(7) not null,
+  U_VERSION    CHAR(1),
+  DT_MOVTO     DATE,
+  TP_CUSTO     NUMBER(1),
+  CD_PRODUTO   NUMBER(6) not null,
+  QT_OPERACAO  NUMBER(14,2),
+  VL_OPERACAO  NUMBER(14,2),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null,
+  NR_ORDEM     NUMBER(7),
+  CD_OPERACAO  NUMBER(7)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.IMOB_EMPREENDCUST
+  add constraint IMOB_EMPREENDCUSTP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_EMPREEND, NR_SEQUENCIA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table IMOB_EMPREENDIT
+prompt ==============================
+prompt
+create table COMERCIAL_PRO.IMOB_EMPREENDIT
+(
+  CD_ORGANIZ     NUMBER(7) not null,
+  CD_EMPRESA     NUMBER(6) not null,
+  NR_EMPREEND    NUMBER(7) not null,
+  NR_SEQUENCIA   NUMBER(3) not null,
+  U_VERSION      CHAR(1),
+  ID_OCC         NUMBER(8) not null,
+  NR_IMOBILIZADO NUMBER(10) not null,
+  DT_INCORPORA   DATE,
+  CD_OPERADOR    NUMBER(6) not null,
+  DT_TRANSACAO   DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.IMOB_EMPREENDIT
+  add constraint IMOB_EMPREENDITP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_EMPREEND, NR_SEQUENCIA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table IMOB_GRUPO
+prompt =========================
+prompt
+create table COMERCIAL_PRO.IMOB_GRUPO
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  CD_GRUPO     NUMBER(7) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  DS_GRUPO     VARCHAR2(100),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null,
+  VL_DEPRECIA  NUMBER(14,2),
+  PE_RESIDUAL  NUMBER(5,2)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.IMOB_GRUPO
+  add constraint IMOB_GRUPOP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_GRUPO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table IMOB_IMOBILIZADO
+prompt ===============================
+prompt
+create table COMERCIAL_PRO.IMOB_IMOBILIZADO
+(
+  CD_ORGANIZ     NUMBER(7) not null,
+  CD_EMPRESA     NUMBER(6) not null,
+  NR_IMOBILIZADO NUMBER(7) not null,
+  U_VERSION      CHAR(1),
+  ID_OCC         NUMBER(8) not null,
+  CD_SUBGRUPO    NUMBER(7) not null,
+  DS_IMOBILIZADO VARCHAR2(100),
+  NR_FROTA       NUMBER(6),
+  DT_MOVTO       DATE not null,
+  VL_OPERACAO    NUMBER(14,2) not null,
+  CD_OPERADOR    NUMBER(6) not null,
+  DT_TRANSACAO   DATE not null,
+  DT_CANCELADO   DATE,
+  CD_OPECANCEL   NUMBER(6),
+  IN_DEPRECIA    CHAR(1),
+  VL_DEPRECIA    NUMBER(14,2),
+  PE_RESIDUAL    NUMBER(5,2),
+  DS_COMPLETA    VARCHAR2(200),
+  DT_VENDA       DATE,
+  VL_VENDA       NUMBER(14,2)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.IMOB_IMOBILIZADO
+  add constraint IMOB_IMOBILIZADOP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_IMOBILIZADO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table IMOB_SUBGRUPO
+prompt ============================
+prompt
+create table COMERCIAL_PRO.IMOB_SUBGRUPO
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  CD_SUBGRUPO  NUMBER(7) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  CD_GRUPO     NUMBER(7) not null,
+  DS_SUBGRUPO  VARCHAR2(100),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null,
+  VL_DEPRECIA  NUMBER(14,2),
+  PE_RESIDUAL  NUMBER(5,2)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.IMOB_SUBGRUPO
+  add constraint IMOB_SUBGRUPOP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_SUBGRUPO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table OS_CARACTERISTICA
+prompt ================================
+prompt
+create table COMERCIAL_PRO.OS_CARACTERISTICA
+(
+  CD_ORGANIZ    NUMBER(7) not null,
+  CD_EMPRESA    NUMBER(6) not null,
+  NR_ORDEM      NUMBER(7) not null,
+  NR_SEQUENCIA  NUMBER(3) not null,
+  NR_SEQCARAC   NUMBER(3) not null,
+  U_VERSION     CHAR(1),
+  QT_QUANTIDADE NUMBER(6),
+  QT_TAMANHO    VARCHAR2(5),
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.OS_CARACTERISTICA
+  add constraint OS_CARACTERISTICAP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_ORDEM, NR_SEQUENCIA, NR_SEQCARAC)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table OS_FROTAFUNCIO
+prompt =============================
+prompt
+create table COMERCIAL_PRO.OS_FROTAFUNCIO
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  CD_FUNCIO    NUMBER(7) not null,
+  NR_FROTA     NUMBER(6) not null,
+  U_VERSION    CHAR(1),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.OS_FROTAFUNCIO
+  add constraint OS_FROTAFUNCIOP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_FUNCIO, NR_FROTA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table OS_GRUPOPCIONAL
+prompt ==============================
+prompt
+create table COMERCIAL_PRO.OS_GRUPOPCIONAL
+(
+  CD_ORGANIZ      NUMBER(7) not null,
+  CD_EMPRESA      NUMBER(6) not null,
+  CD_GRUPOPCIONAL NUMBER(7) not null,
+  U_VERSION       CHAR(1),
+  ID_OCC          NUMBER(8) not null,
+  IN_CANCELADO    CHAR(1) not null,
+  DS_GRUPOPCIONAL VARCHAR2(50),
+  CD_OPERADOR     NUMBER(6) not null,
+  DT_TRANSACAO    DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.OS_GRUPOPCIONAL
+  add constraint OS_GRUPOPCIONALP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_GRUPOPCIONAL)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table OS_ITEMOPCIONAL
+prompt ==============================
+prompt
+create table COMERCIAL_PRO.OS_ITEMOPCIONAL
+(
+  CD_ORGANIZ      NUMBER(7) not null,
+  CD_EMPRESA      NUMBER(6) not null,
+  CD_ITEMOPCIONAL NUMBER(7) not null,
+  U_VERSION       CHAR(1),
+  CD_GRUPOPCIONAL NUMBER(7) not null,
+  ID_OCC          NUMBER(8) not null,
+  IN_CANCELADO    CHAR(1) not null,
+  DS_ITEMOPCIONAL VARCHAR2(50),
+  CD_OPERADOR     NUMBER(6) not null,
+  DT_TRANSACAO    DATE not null,
+  IN_COR          CHAR(1),
+  IN_OBSERVACAO   CHAR(1)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.OS_ITEMOPCIONAL
+  add constraint OS_ITEMOPCIONALP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_ITEMOPCIONAL)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table OS_LANCAMENTO
+prompt ============================
+prompt
+create table COMERCIAL_PRO.OS_LANCAMENTO
+(
+  CD_ORGANIZ     NUMBER(7) not null,
+  CD_EMPRESA     NUMBER(6) not null,
+  NR_LANCAMENTO  NUMBER(7) not null,
+  U_VERSION      CHAR(1),
+  CD_TPORDEM     NUMBER(7) not null,
+  DT_MOVTO       DATE,
+  CD_CLIENTE     NUMBER(7),
+  CD_FORNECEDOR  NUMBER(7),
+  CD_FUNCIO      NUMBER(7),
+  NR_FROTA       NUMBER(6),
+  NR_INIMARCADOR NUMBER(12,3),
+  NR_FIMMARCADOR NUMBER(12,3),
+  QT_HRCOBRAR    NUMBER(4,1),
+  NR_CARGA       NUMBER(4,1),
+  VL_HORA        NUMBER(14,2),
+  VL_CUSTO       NUMBER(14,2),
+  IN_PGTOBONUS   CHAR(1) not null,
+  VL_OPERACAO    NUMBER(14,2),
+  CD_OPERADOR    NUMBER(6) not null,
+  DT_TRANSACAO   DATE not null,
+  NR_ORDEM       NUMBER(7),
+  DS_OBSERVA     VARCHAR2(200),
+  DT_CANCELA     DATE,
+  IN_CUPOM       CHAR(1)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.OS_LANCAMENTO
+  add constraint OS_LANCAMENTOP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_LANCAMENTO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table OS_OPCIONAL
+prompt ==========================
+prompt
+create table COMERCIAL_PRO.OS_OPCIONAL
+(
+  CD_ORGANIZ      NUMBER(7) not null,
+  CD_EMPRESA      NUMBER(6) not null,
+  NR_ORDEM        NUMBER(7) not null,
+  CD_ITEMOPCIONAL NUMBER(7) not null,
+  NR_SEQUENCIA    NUMBER(3) not null,
+  U_VERSION       CHAR(1),
+  CD_COR          NUMBER(7),
+  DS_OBSERVACAO   VARCHAR2(100),
+  CD_OPERADOR     NUMBER(6) not null,
+  DT_TRANSACAO    DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.OS_OPCIONAL
+  add constraint OS_OPCIONALP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_ORDEM, CD_ITEMOPCIONAL, NR_SEQUENCIA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table OS_ORDEM
+prompt =======================
+prompt
+create table COMERCIAL_PRO.OS_ORDEM
+(
+  CD_ORGANIZ     NUMBER(7) not null,
+  CD_EMPRESA     NUMBER(6) not null,
+  NR_ORDEM       NUMBER(7) not null,
+  U_VERSION      CHAR(1),
+  DT_MOVTO       DATE,
+  CD_PARCEIRO    NUMBER(7),
+  NR_SEQENDERECO NUMBER(3),
+  VL_ORDEM       NUMBER(14,2),
+  CD_STATUS      NUMBER(3) not null,
+  DT_CANCELA     DATE,
+  DT_FECHA       DATE,
+  TP_FORMAPAGTO  NUMBER(1),
+  CD_OPERADOR    NUMBER(6) not null,
+  DT_TRANSACAO   DATE not null,
+  DS_PROBLEMA    VARCHAR2(600),
+  DS_OBJETO      VARCHAR2(600),
+  DT_ARTE        DATE,
+  DT_CORTE       DATE,
+  DT_REVELACAO   DATE,
+  DT_SERIGRAFIA  DATE,
+  DT_ACABAMENTO  DATE,
+  DT_PRZENTREGA  DATE,
+  NR_EMPREEND    NUMBER(7)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.OS_ORDEM
+  add constraint OS_ORDEMP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_ORDEM)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table OS_ORDEMST
+prompt =========================
+prompt
+create table COMERCIAL_PRO.OS_ORDEMST
+(
+  CD_STATUS    NUMBER(3) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  DS_STATUS    VARCHAR2(100),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.OS_ORDEMST
+  add constraint OS_ORDEMSTP1 primary key (CD_STATUS)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table OS_PRODUTO
+prompt =========================
+prompt
+create table COMERCIAL_PRO.OS_PRODUTO
+(
+  CD_ORGANIZ    NUMBER(7) not null,
+  CD_EMPRESA    NUMBER(6) not null,
+  NR_ORDEM      NUMBER(10) not null,
+  NR_SEQUENCIA  NUMBER(3) not null,
+  U_VERSION     CHAR(1),
+  CD_PRODUTO    NUMBER(6) not null,
+  QT_PRODUTO    NUMBER(14,2),
+  VL_UNITARIO   NUMBER(14,2),
+  VL_TOTAL      NUMBER(14,2),
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null,
+  DS_OBSERVA    VARCHAR2(600),
+  VL_CUSTOMEDIO NUMBER(14,2)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.OS_PRODUTO
+  add constraint OS_PRODUTOP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_ORDEM, NR_SEQUENCIA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table OS_SERVICO
+prompt =========================
+prompt
+create table COMERCIAL_PRO.OS_SERVICO
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  NR_ORDEM     NUMBER(7) not null,
+  NR_SEQORDEM  NUMBER(3) not null,
+  U_VERSION    CHAR(1),
+  CD_TPORDEM   NUMBER(7) not null,
+  CD_FUNCIO    NUMBER(7),
+  QT_HORAS     NUMBER(14,2),
+  VL_HORAS     NUMBER(14,2),
+  VL_TOTAL     NUMBER(14,2),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null,
+  DS_SERVICO   VARCHAR2(600)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.OS_SERVICO
+  add constraint OS_SERVICOP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_ORDEM, NR_SEQORDEM)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table OS_TPORDEM
+prompt =========================
+prompt
+create table COMERCIAL_PRO.OS_TPORDEM
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  CD_TPORDEM   NUMBER(7) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  DS_TPORDEM   VARCHAR2(100),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null,
+  VL_HORA      NUMBER(14,2),
+  TP_COBRANCA  NUMBER(1)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.OS_TPORDEM
+  add constraint OS_TPORDEMP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_TPORDEM)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table PROD_CLASSIFICA
+prompt ==============================
+prompt
+create table COMERCIAL_PRO.PROD_CLASSIFICA
+(
+  CD_ORGANIZ    NUMBER(7) not null,
+  CD_EMPRESA    NUMBER(6) not null,
+  CD_CLASSIFICA NUMBER(7) not null,
+  CD_PRDAGRIC   NUMBER(3) not null,
+  U_VERSION     CHAR(1),
+  ID_OCC        NUMBER(8) not null,
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null,
+  NR_ORDEM      NUMBER(3) not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.PROD_CLASSIFICA
+  add constraint PROD_CLASSIFICAP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_CLASSIFICA, CD_PRDAGRIC)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table PROD_CLASSPRD
+prompt ============================
+prompt
+create table COMERCIAL_PRO.PROD_CLASSPRD
+(
+  CD_ORGANIZ    NUMBER(7) not null,
+  CD_EMPRESA    NUMBER(6) not null,
+  NR_PROCESSO   NUMBER(10) not null,
+  CD_CLASSIFICA NUMBER(10) not null,
+  U_VERSION     CHAR(1),
+  PE_VERIFICADO NUMBER(5,2),
+  PE_DESCONTADO NUMBER(5,2),
+  QT_DESCONTADO NUMBER(10),
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.PROD_CLASSPRD
+  add constraint PROD_CLASSPRDP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_PROCESSO, CD_CLASSIFICA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table PROD_FINALIDADE
+prompt ==============================
+prompt
+create table COMERCIAL_PRO.PROD_FINALIDADE
+(
+  CD_FINALIDADE NUMBER(7) not null,
+  U_VERSION     CHAR(1),
+  ID_OCC        NUMBER(8) not null,
+  DS_FINALIDADE VARCHAR2(100),
+  IN_CLASSIFICA CHAR(1) not null,
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.PROD_FINALIDADE
+  add constraint PROD_FINALIDADEP1 primary key (CD_FINALIDADE)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table PROD_ITEMCLASS
+prompt =============================
+prompt
+create table COMERCIAL_PRO.PROD_ITEMCLASS
+(
+  CD_CLASSIFICA NUMBER(7) not null,
+  U_VERSION     CHAR(1),
+  ID_OCC        NUMBER(8) not null,
+  DS_CLASSIFICA VARCHAR2(100),
+  IN_UMIDADE    CHAR(1) not null,
+  IN_AVARIADO   CHAR(1) not null,
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.PROD_ITEMCLASS
+  add constraint PROD_ITEMCLASSP1 primary key (CD_CLASSIFICA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table PROD_MOVTOPRO
+prompt ============================
+prompt
+create table COMERCIAL_PRO.PROD_MOVTOPRO
+(
+  CD_ORGANIZ    NUMBER(7) not null,
+  CD_EMPRESA    NUMBER(6) not null,
+  NR_PROCESSO   NUMBER(7) not null,
+  NR_SEQUENCIA  NUMBER(3) not null,
+  U_VERSION     CHAR(1),
+  CD_PRDAGRIC   NUMBER(3) not null,
+  CD_FINALIDADE NUMBER(7) not null,
+  NR_DOCTO      VARCHAR2(20),
+  CD_PARCSILO   NUMBER(7),
+  TP_MOVTO      NUMBER(1),
+  DT_MOVTO      DATE,
+  QT_PRODUTO    NUMBER(10),
+  VL_PRECO      NUMBER(15,4),
+  TP_MOEDA      VARCHAR2(3),
+  VL_OPERACAO   NUMBER(14,2),
+  CD_SAFRA      CHAR(8) not null,
+  CD_PARCVENDA  NUMBER(7),
+  NR_XFATURA    NUMBER(6),
+  NR_FATURA     NUMBER(7),
+  DT_FATURA     DATE,
+  DT_VENDA      DATE,
+  CD_OPERADOR   NUMBER(4) not null,
+  DT_TRANSACAO  DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.PROD_MOVTOPRO
+  add constraint PROD_MOVTOPROP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_PROCESSO, NR_SEQUENCIA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table PROD_PRDAGRIC
+prompt ============================
+prompt
+create table COMERCIAL_PRO.PROD_PRDAGRIC
+(
+  CD_PRDAGRIC  NUMBER(3) not null,
+  U_VERSION    CHAR(1),
+  CD_CULTURA   NUMBER(3) not null,
+  ID_OCC       NUMBER(8) not null,
+  DS_PRDAGRIC  VARCHAR2(100),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.PROD_PRDAGRIC
+  add constraint PROD_PRDAGRICP1 primary key (CD_PRDAGRIC)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table PROD_PRODUCAO
+prompt ============================
+prompt
+create table COMERCIAL_PRO.PROD_PRODUCAO
+(
+  CD_ORGANIZ    NUMBER(7) not null,
+  CD_EMPRESA    NUMBER(6) not null,
+  NR_PROCESSO   NUMBER(7) not null,
+  U_VERSION     CHAR(1),
+  CD_PARCSILO   NUMBER(7),
+  NR_ROMANEIO   VARCHAR2(20),
+  DT_MOVTO      DATE,
+  CD_PRDAGRIC   NUMBER(3) not null,
+  CD_SAFRA      CHAR(8) not null,
+  CD_FINALIDADE NUMBER(7) not null,
+  QT_BRUTO      NUMBER(10),
+  QT_TARA       NUMBER(10),
+  QT_NETO       NUMBER(10),
+  QT_DESCONTO   NUMBER(10),
+  QT_LIQUIDO    NUMBER(10),
+  CD_PARTRANSP  NUMBER(7),
+  CD_MOTORISTA  NUMBER(7),
+  NR_PLACA      VARCHAR2(7),
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.PROD_PRODUCAO
+  add constraint PROD_PRODUCAOP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_PROCESSO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table PROD_PROPENTREGA
+prompt ===============================
+prompt
+create table COMERCIAL_PRO.PROD_PROPENTREGA
+(
+  CD_ORGANIZ     NUMBER(7) not null,
+  CD_EMPRESA     NUMBER(6) not null,
+  NR_PROCESSO    NUMBER(7) not null,
+  NR_SEQUENCIA   NUMBER(3) not null,
+  U_VERSION      CHAR(1),
+  CD_PROPRIEDADE NUMBER(7) not null,
+  CD_TALHAO      NUMBER(7) not null,
+  CD_VARIEDADE   NUMBER(7) not null,
+  CD_OPERADOR    NUMBER(6) not null,
+  DT_TRANSACAO   DATE not null,
+  PE_PERCENTUAL  NUMBER(5,2) not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.PROD_PROPENTREGA
+  add constraint PROD_PROPENTREGAP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_PROCESSO, NR_SEQUENCIA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table PROP_EXPLORA
+prompt ===========================
+prompt
+create table COMERCIAL_PRO.PROP_EXPLORA
+(
+  CD_ORGANIZ     NUMBER(7) not null,
+  CD_EMPRESA     NUMBER(6) not null,
+  CD_PROPRIEDADE NUMBER(7) not null,
+  CD_TALHAO      NUMBER(7) not null,
+  CD_CULTURA     NUMBER(3) not null,
+  CD_SAFRA       CHAR(8) not null,
+  U_VERSION      CHAR(1),
+  ID_OCC         NUMBER(8) not null,
+  QT_AREA        NUMBER(8,2),
+  CD_OPERADOR    NUMBER(6) not null,
+  DT_TRANSACAO   DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.PROP_EXPLORA
+  add constraint PROP_EXPLORAP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_PROPRIEDADE, CD_TALHAO, CD_CULTURA, CD_SAFRA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table PROP_PROPRIEDADE
+prompt ===============================
+prompt
+create table COMERCIAL_PRO.PROP_PROPRIEDADE
+(
+  CD_ORGANIZ     NUMBER(7) not null,
+  CD_EMPRESA     NUMBER(6) not null,
+  CD_PROPRIEDADE NUMBER(7) not null,
+  U_VERSION      CHAR(1),
+  ID_OCC         NUMBER(8) not null,
+  DS_PROPRIEDADE VARCHAR2(100),
+  CD_OPERADOR    NUMBER(6) not null,
+  DT_TRANSACAO   DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.PROP_PROPRIEDADE
+  add constraint PROP_PROPRIEDADEP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_PROPRIEDADE)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table PROP_TALHAO
+prompt ==========================
+prompt
+create table COMERCIAL_PRO.PROP_TALHAO
+(
+  CD_ORGANIZ     NUMBER(7) not null,
+  CD_EMPRESA     NUMBER(6) not null,
+  CD_PROPRIEDADE NUMBER(7) not null,
+  CD_TALHAO      NUMBER(7) not null,
+  U_VERSION      CHAR(1),
+  ID_OCC         NUMBER(8) not null,
+  DS_TALHAO      VARCHAR2(100),
+  CD_OPERADOR    NUMBER(6) not null,
+  DT_TRANSACAO   DATE not null,
+  QT_AREA        NUMBER(8,2)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.PROP_TALHAO
+  add constraint PROP_TALHAOP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_PROPRIEDADE, CD_TALHAO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table RH_FUNCIO
+prompt ========================
+prompt
+create table COMERCIAL_PRO.RH_FUNCIO
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  CD_FUNCIO    NUMBER(7) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  DT_ADMISSAO  DATE,
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null,
+  VL_SALARIO   NUMBER(14,2),
+  DT_DEMISSAO  DATE,
+  TP_MOEDA     VARCHAR2(3),
+  TP_FUNCIO    NUMBER(2),
+  CD_FUNCAO    NUMBER(7),
+  TP_CONTRATO  NUMBER(2),
+  NR_FICHA     NUMBER(7)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.RH_FUNCIO
+  add constraint RH_FUNCIOP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_FUNCIO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table SIST_COLMANUT
+prompt ============================
+prompt
+create table COMERCIAL_PRO.SIST_COLMANUT
+(
+  NM_ENTIDADE  VARCHAR2(20) not null,
+  NR_MANUT     NUMBER(6) not null,
+  ID_OCCORIGEM NUMBER(8) not null,
+  NM_COLUNA    VARCHAR2(20) not null,
+  U_VERSION    CHAR(1)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.SIST_COLMANUT
+  add constraint SIST_COLMANUTP1 primary key (NM_ENTIDADE, NR_MANUT, ID_OCCORIGEM, NM_COLUNA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table SIST_COMPONENTE
+prompt ==============================
+prompt
+create table COMERCIAL_PRO.SIST_COMPONENTE
+(
+  CD_COMPONENTE VARCHAR2(16) not null,
+  DS_LINGUAGEM  VARCHAR2(10) not null,
+  U_VERSION     CHAR(1),
+  ID_OCC        NUMBER(8) not null,
+  NM_COMPONENTE VARCHAR2(100),
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null,
+  TP_COMPONENTE NUMBER(1),
+  NM_HELPMAN    VARCHAR2(100)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table SIST_CONTEUDO
+prompt ============================
+prompt
+create table COMERCIAL_PRO.SIST_CONTEUDO
+(
+  NM_ENTIDADE  VARCHAR2(20) not null,
+  NR_MANUT     NUMBER(6) not null,
+  ID_OCCORIGEM NUMBER(8) not null,
+  NM_COLUNA    VARCHAR2(20) not null,
+  TP_CONTEUDO  NUMBER(1) not null,
+  NR_SEQUENCIA NUMBER(3) not null,
+  U_VERSION    CHAR(1),
+  TP_CAMPO     VARCHAR2(40) not null,
+  DS_CONTEUDO  VARCHAR2(1000)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.SIST_CONTEUDO
+  add constraint SIST_CONTEUDOP1 primary key (NM_ENTIDADE, NR_MANUT, ID_OCCORIGEM, NM_COLUNA, TP_CONTEUDO, NR_SEQUENCIA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table SIST_EMPRESA
+prompt ===========================
+prompt
+create table COMERCIAL_PRO.SIST_EMPRESA
+(
+  CD_ORGANIZ      NUMBER(7),
+  CD_EMPRESA      NUMBER(6),
+  U_VERSION       CHAR(1),
+  ID_OCC          NUMBER(8) not null,
+  NM_EMPRESA      VARCHAR2(50),
+  CD_OPERADOR     NUMBER(6) not null,
+  DT_TRANSACAO    DATE not null,
+  CD_EMPRESAMAE   NUMBER(6) not null,
+  DS_ABREVSISTEMA VARCHAR2(20),
+  TP_SEGUIMENTO   NUMBER(2),
+  IN_MULTIMOEDA   CHAR(1),
+  TP_LINGUAGEM    VARCHAR2(3),
+  IN_PARAGUAI     CHAR(1),
+  IN_ESTQNEGATIVO CHAR(1)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table SIST_MANUT
+prompt =========================
+prompt
+create table COMERCIAL_PRO.SIST_MANUT
+(
+  NM_ENTIDADE   VARCHAR2(20),
+  NR_MANUT      NUMBER(6),
+  ID_OCCORIGEM  NUMBER(8),
+  U_VERSION     CHAR(1),
+  NM_COMPONENTE VARCHAR2(20) not null,
+  TP_MANUTENCAO NUMBER(1) not null,
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null,
+  DS_CHAVE      VARCHAR2(60)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table SIST_MENU
+prompt ========================
+prompt
+create table COMERCIAL_PRO.SIST_MENU
+(
+  NR_LANCAMENTO NUMBER(7) not null,
+  U_VERSION     CHAR(1),
+  ID_OCC        NUMBER(8) not null,
+  CD_SISTEMA    NUMBER(3) not null,
+  CD_NIVEL      VARCHAR2(20),
+  NM_MENU       VARCHAR2(50),
+  CD_COMPONENTE VARCHAR2(16),
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null,
+  IN_ATIVO      CHAR(1)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.SIST_MENU
+  add constraint SIST_MENUP1 primary key (NR_LANCAMENTO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table SIST_MENUEMP
+prompt ===========================
+prompt
+create table COMERCIAL_PRO.SIST_MENUEMP
+(
+  CD_ORGANIZ    NUMBER(7) not null,
+  CD_EMPRESA    NUMBER(6) not null,
+  NR_LANCAMENTO NUMBER(7) not null,
+  U_VERSION     CHAR(1),
+  ID_OCC        NUMBER(8) not null,
+  IN_ATIVO      CHAR(1) not null,
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.SIST_MENUEMP
+  add constraint SIST_MENUEMPP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_LANCAMENTO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table SIST_MENU_BKP
+prompt ============================
+prompt
+create table COMERCIAL_PRO.SIST_MENU_BKP
+(
+  NR_LANCAMENTO NUMBER(7) not null,
+  U_VERSION     CHAR(1),
+  ID_OCC        NUMBER(8) not null,
+  CD_SISTEMA    NUMBER(3) not null,
+  CD_NIVEL      VARCHAR2(20),
+  NM_MENU       VARCHAR2(50),
+  CD_COMPONENTE VARCHAR2(16),
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null,
+  IN_ATIVO      CHAR(1)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table SIST_NUMSEQ
+prompt ==========================
+prompt
+create table COMERCIAL_PRO.SIST_NUMSEQ
+(
+  NM_ENTIDADEID VARCHAR2(32) not null,
+  U_VERSION     CHAR(1),
+  ID_HIST       NUMBER(8) not null,
+  ID_OCC        NUMBER(8) not null,
+  NR_LANCAMENTO NUMBER(7) not null,
+  NR_LIMITEOCOR NUMBER(7) not null,
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.SIST_NUMSEQ
+  add constraint SIST_NUMSEQP1 primary key (NM_ENTIDADEID)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table SIST_NUMSEQEMP
+prompt =============================
+prompt
+create table COMERCIAL_PRO.SIST_NUMSEQEMP
+(
+  CD_ORGANIZ    NUMBER(7) not null,
+  CD_EMPRESA    NUMBER(6) not null,
+  NM_ENTIDADEID VARCHAR2(32) not null,
+  U_VERSION     CHAR(1),
+  ID_HIST       NUMBER(8) not null,
+  ID_OCC        NUMBER(8) not null,
+  NR_LANCAMENTO NUMBER(7) not null,
+  NR_LIMITEOCOR NUMBER(7) not null,
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.SIST_NUMSEQEMP
+  add constraint SIST_NUMSEQEMPP1 primary key (CD_ORGANIZ, CD_EMPRESA, NM_ENTIDADEID)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table SIST_ORGANIZ
+prompt ===========================
+prompt
+create table COMERCIAL_PRO.SIST_ORGANIZ
+(
+  CD_ORGANIZ   NUMBER(7),
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  DS_ORGANIZ   VARCHAR2(100),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table SIST_USUARIO
+prompt ===========================
+prompt
+create table COMERCIAL_PRO.SIST_USUARIO
+(
+  CD_ORGANIZ   NUMBER(7),
+  CD_EMPRESA   NUMBER(6),
+  CD_PARCEIRO  NUMBER(7),
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  CD_SENHA     VARCHAR2(20),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table TEC_ALVO
+prompt =======================
+prompt
+create table COMERCIAL_PRO.TEC_ALVO
+(
+  CD_ALVO       NUMBER(7) not null,
+  U_VERSION     CHAR(1),
+  ID_OCC        NUMBER(8) not null,
+  DS_ALVO       VARCHAR2(100),
+  CD_CLASSE     CHAR(1),
+  DS_CIENTIFICO VARCHAR2(100),
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table TEC_ALVOCULT
+prompt ===========================
+prompt
+create table COMERCIAL_PRO.TEC_ALVOCULT
+(
+  CD_CULTURA   NUMBER(3) not null,
+  CD_ALVO      NUMBER(7) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table TEC_CLASSEUSO
+prompt ============================
+prompt
+create table COMERCIAL_PRO.TEC_CLASSEUSO
+(
+  CD_CLASSEUSO NUMBER(7) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  DS_CLASSEUSO VARCHAR2(100),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null,
+  TP_ORDEM     NUMBER(3)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table TEC_CLIMA
+prompt ========================
+prompt
+create table COMERCIAL_PRO.TEC_CLIMA
+(
+  CD_ORGANIZ    NUMBER(7) not null,
+  CD_EMPRESA    NUMBER(6) not null,
+  CD_ESTACAO    NUMBER(3) not null,
+  DT_MOVTO      DATE not null,
+  U_VERSION     CHAR(1),
+  QT_CHUVA      NUMBER(13,2),
+  QT_EVAPORACAO NUMBER(13,2),
+  QT_TEMPMIN    NUMBER(13,2),
+  QT_TEMPMAX    NUMBER(13,2),
+  QT_VENTO      NUMBER(13,2),
+  PE_UMIDADE    NUMBER(5,2),
+  IN_GEADA      CHAR(1) not null,
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.TEC_CLIMA
+  add constraint TEC_CLIMAP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_ESTACAO, DT_MOVTO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table TEC_CULTURA
+prompt ==========================
+prompt
+create table COMERCIAL_PRO.TEC_CULTURA
+(
+  CD_CULTURA   NUMBER(3) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  DS_CULTURA   VARCHAR2(100),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.TEC_CULTURA
+  add constraint TEC_CULTURAP1 primary key (CD_CULTURA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table TEC_ESTACAO
+prompt ==========================
+prompt
+create table COMERCIAL_PRO.TEC_ESTACAO
+(
+  CD_ORGANIZ     NUMBER(7) not null,
+  CD_EMPRESA     NUMBER(6) not null,
+  CD_ESTACAO     NUMBER(3) not null,
+  U_VERSION      CHAR(1),
+  ID_OCC         NUMBER(8) not null,
+  DS_ESTACAO     VARCHAR2(100),
+  CD_PROPRIEDADE NUMBER(2),
+  CD_TALHAO      NUMBER(3) not null,
+  CD_OPERADOR    NUMBER(6) not null,
+  DT_TRANSACAO   DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.TEC_ESTACAO
+  add constraint TEC_ESTACAOP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_ESTACAO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table TEC_FORMULACAO
+prompt =============================
+prompt
+create table COMERCIAL_PRO.TEC_FORMULACAO
+(
+  CD_FORMULACAO NUMBER(7) not null,
+  U_VERSION     CHAR(1),
+  ID_OCC        NUMBER(8) not null,
+  DS_FORMULACAO VARCHAR2(100),
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table TEC_FROTAFUNCIO
+prompt ==============================
+prompt
+create table COMERCIAL_PRO.TEC_FROTAFUNCIO
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  NR_ORDEM     NUMBER(7) not null,
+  CD_PARCEIRO  NUMBER(7) not null,
+  NR_FROTA     NUMBER(6) not null,
+  U_VERSION    CHAR(1),
+  ID_OCC       NUMBER(8) not null,
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.TEC_FROTAFUNCIO
+  add constraint TEC_FROTAFUNCIOP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_ORDEM, CD_PARCEIRO, NR_FROTA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table TEC_ORDEM
+prompt ========================
+prompt
+create table COMERCIAL_PRO.TEC_ORDEM
+(
+  CD_ORGANIZ    NUMBER(7) not null,
+  CD_EMPRESA    NUMBER(6) not null,
+  NR_ORDEM      NUMBER(7) not null,
+  U_VERSION     CHAR(1),
+  CD_TPOPERACAO NUMBER(7) not null,
+  DT_MOVTO      DATE,
+  CD_CULTURA    NUMBER(3),
+  CD_SAFRA      CHAR(8) not null,
+  DT_CANCELADO  DATE,
+  DT_FECHA      DATE,
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.TEC_ORDEM
+  add constraint TEC_ORDEMP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_ORDEM)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table TEC_ORDEMALV
+prompt ===========================
+prompt
+create table COMERCIAL_PRO.TEC_ORDEMALV
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  NR_ORDEM     NUMBER(7) not null,
+  CD_ALVO      NUMBER(7) not null,
+  U_VERSION    CHAR(1),
+  TP_INFESTA   CHAR(1),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.TEC_ORDEMALV
+  add constraint TEC_ORDEMALVP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_ORDEM, CD_ALVO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table TEC_PRINCATIVO
+prompt =============================
+prompt
+create table COMERCIAL_PRO.TEC_PRINCATIVO
+(
+  CD_PRINCATIVO NUMBER(7) not null,
+  U_VERSION     CHAR(1),
+  ID_OCC        NUMBER(8) not null,
+  DS_PRINCATIVO VARCHAR2(50) not null,
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null,
+  DS_OBSERVACAO VARCHAR2(1000),
+  CD_MECACAO    NUMBER(7),
+  CD_GPOQUIMICO NUMBER(7),
+  VL_CUSTOMEDIO NUMBER(15,4)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table TEC_PRODUTO
+prompt ==========================
+prompt
+create table COMERCIAL_PRO.TEC_PRODUTO
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  NR_ORDEM     NUMBER(7) not null,
+  CD_PRODUTO   NUMBER(6) not null,
+  U_VERSION    CHAR(1),
+  QT_RECOMENDA NUMBER(14,2),
+  QT_UTILIZADO NUMBER(14,2),
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.TEC_PRODUTO
+  add constraint TEC_PRODUTOP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_ORDEM, CD_PRODUTO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table TEC_SAFRA
+prompt ========================
+prompt
+create table COMERCIAL_PRO.TEC_SAFRA
+(
+  CD_ORGANIZ   NUMBER(7) not null,
+  CD_EMPRESA   NUMBER(6) not null,
+  CD_CULTURA   NUMBER(3) not null,
+  CD_SAFRA     CHAR(8) not null,
+  U_VERSION    CHAR(1),
+  DT_INICIO    DATE not null,
+  DT_FIM       DATE not null,
+  CD_OPERADOR  NUMBER(6) not null,
+  DT_TRANSACAO DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.TEC_SAFRA
+  add constraint TEC_SAFRAP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_CULTURA, CD_SAFRA)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table TEC_TALHAO
+prompt =========================
+prompt
+create table COMERCIAL_PRO.TEC_TALHAO
+(
+  CD_ORGANIZ     NUMBER(7) not null,
+  CD_EMPRESA     NUMBER(6) not null,
+  NR_ORDEM       NUMBER(7) not null,
+  CD_PROPRIEDADE NUMBER(7) not null,
+  CD_TALHAO      NUMBER(7) not null,
+  U_VERSION      CHAR(1),
+  QT_AREAREC     NUMBER(14,2),
+  QT_AREAPLICA   NUMBER(14,2),
+  CD_OPERADOR    NUMBER(6) not null,
+  DT_TRANSACAO   DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.TEC_TALHAO
+  add constraint TEC_TALHAOP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_ORDEM, CD_PROPRIEDADE, CD_TALHAO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table TEC_TPOPERACAO
+prompt =============================
+prompt
+create table COMERCIAL_PRO.TEC_TPOPERACAO
+(
+  CD_ORGANIZ    NUMBER(7) not null,
+  CD_EMPRESA    NUMBER(6) not null,
+  CD_TPOPERACAO NUMBER(7) not null,
+  U_VERSION     CHAR(1),
+  ID_OCC        NUMBER(8) not null,
+  DS_TPOPERACAO VARCHAR2(100),
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null,
+  IN_USAPRODUTO CHAR(1) not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.TEC_TPOPERACAO
+  add constraint TEC_TPOPERACAOP1 primary key (CD_ORGANIZ, CD_EMPRESA, CD_TPOPERACAO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table TEC_USOTALHAO
+prompt ============================
+prompt
+create table COMERCIAL_PRO.TEC_USOTALHAO
+(
+  CD_ORGANIZ     NUMBER(7) not null,
+  CD_EMPRESA     NUMBER(6) not null,
+  NR_ORDEM       NUMBER(7) not null,
+  CD_PRODUTO     NUMBER(6) not null,
+  CD_PROPRIEDADE NUMBER(7) not null,
+  CD_TALHAO      NUMBER(7) not null,
+  U_VERSION      CHAR(1),
+  QT_PRODUTO     NUMBER(14,3),
+  CD_OPERADOR    NUMBER(6) not null,
+  DT_TRANSACAO   DATE not null,
+  VL_CUSTOMEDIO  NUMBER(12,3)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table COMERCIAL_PRO.TEC_USOTALHAO
+  add constraint TEC_USOTALHAOP1 primary key (CD_ORGANIZ, CD_EMPRESA, NR_ORDEM, CD_PRODUTO, CD_PROPRIEDADE, CD_TALHAO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating table TEC_VARIEDADE
+prompt ============================
+prompt
+create table COMERCIAL_PRO.TEC_VARIEDADE
+(
+  CD_VARIEDADE  NUMBER(7) not null,
+  U_VERSION     CHAR(1),
+  ID_OCC        NUMBER(8) not null,
+  DS_VARIEDADE  VARCHAR2(100),
+  CD_MARCA      NUMBER(7) not null,
+  CD_CULTURA    NUMBER(3),
+  QT_CICLO      NUMBER(4),
+  TP_TECNOLOGIA NUMBER(2),
+  TP_MATERIAL   NUMBER(2),
+  CD_OPERADOR   NUMBER(6) not null,
+  DT_TRANSACAO  DATE not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+prompt
+prompt Creating view FIN_DECSALDO_V
+prompt ============================
+prompt
+create or replace view comercial_pro.fin_decsaldo_v as
+select distinct
+b.cd_organiz, b.cd_empresa, b.nr_processo,i.nr_seqfat,
+b.cd_parceiro, b.dt_movto,b.nr_nota,
+b.tp_fatura, i.dt_juros, i.dt_vencimento, b.cd_tipodocto, tp_moeda,
+CAST
+((select sum(vl_operacao) from
+fin_movto
+where
+cd_empresa = i.cd_empresa
+and
+nr_processo = i.nr_processo
+and
+nr_seqfat = i.nr_seqfat)
+AS NUMBER(13,2)) vl_saldo
+from
+fin_base b
+inner
+join fin_item i on
+b.cd_empresa = i.cd_empresa
+and
+b.nr_processo = i.nr_processo
+inner
+join fin_movto m on
+m.nr_processo = i.nr_processo
+and
+m.nr_seqfat = i.nr_seqfat
+and
+ m.cd_Empresa = i.cd_empresa
+and
+exists
+(
+select sum(vl_operacao) from
+fin_movto
+where
+cd_empresa = i.cd_empresa and
+nr_processo = i.nr_processo
+and
+nr_seqfat = i.nr_seqfat
+group
+by b.nr_processo,i.nr_seqfat having
+sum
+(vl_operacao) > 0);
+
+prompt
+prompt Creating view FROT_FROTA_V
+prompt ==========================
+prompt
+create or replace view comercial_pro.frot_frota_v as
+select a.cd_organiz,
+       a.cd_empresa,
+       a.tp_frota,
+       a.nr_frota,
+       c.cd_tipofrota,
+       d.ds_tipofrota,
+       a.nr_placa,
+       b.cd_marca,
+       b.ds_marca,
+       a.cd_modelo,
+       c.ds_modelo,
+       a.nr_marcador,
+       a.tp_marcador,
+       a.nr_seqmarcador,
+       a.cd_transportador,
+       (select nm_pessoa
+          from gcad_pessoa e
+         where a.cd_organiz = e.cd_organiz
+           and a.cd_empresa = e.cd_empresa
+           and a.cd_transportador = e.cd_parceiro) as nm_transportador
+  from frot_frota a, frot_marca b, frot_modelo c, frot_tipofrota d
+ where b.cd_marca = c.cd_marca
+   and b.cd_marca = c.cd_marca
+   and a.cd_modelo = c.cd_modelo
+   and c.cd_tipofrota = d.cd_tipofrota
+   and a.cd_organiz = b.cd_organiz and a.cd_empresa = b.cd_empresa
+   and a.cd_organiz = c.cd_organiz
+   and a.cd_empresa  = c.cd_empresa
+   and a.cd_organiz = d.cd_organiz
+   and a.cd_empresa = d.cd_empresa;
+
+prompt
+prompt Creating view GCAD_PESSOA_V1
+prompt ============================
+prompt
+CREATE OR REPLACE VIEW COMERCIAL_PRO.GCAD_PESSOA_V1 AS
+SELECT cd_organiz, cd_empresa, cd_parceiro, nm_pessoa, EXTRACT(DAY FROM dT_nascimento) AS dt_dia
+      ,EXTRACT(MONTH FROM dt_nascimento) AS dT_mes
+      ,EXTRACT(YEAR FROM dt_nascimento) AS dt_ano
+  FROM gcad_pessoa;
+
+prompt
+prompt Creating view GDOC_BASEITEM_V
+prompt =============================
+prompt
+create or replace view comercial_pro.gdoc_baseitem_v as
+select A.CD_ORGANIZ, a.cd_empresa, a.nr_processo, a.cd_tipodocto,
+ b.nr_empreend, a.dt_cancelado, b.cd_operacao, d.cd_grupo,  c.in_apresentadre,
+ a.vl_total as vl_totbase, b.vl_total
+ from gdoc_base a, gdoc_item b, fin_operacao c, fin_grupo d
+where a.cd_organiz = b.cd_organiz
+and a.cd_empresa = b.cd_empresa
+and a.nr_processo = b.nr_processo
+and b.nr_empreend > 0
+and c.cd_organiz = a.cd_organiz
+and c.cd_empresa = a.cd_empresa
+and c.cd_operacao = b.cd_operacao
+and c.cd_organiz = d.cd_organiz
+and c.cd_empresa = d.cd_empresa
+and c.cd_grupo = d.cd_grupo
+and a.dt_cancelado is null;
+
+prompt
+prompt Creating view PROD_DECSALDO_V
+prompt =============================
+prompt
+create or replace view comercial_pro.prod_decsaldo_v as
+select a.cd_organiz, a.cd_empresa, a.nr_processo, a.cd_prdagric, a.cd_parcsilo, a.cd_safra, cD_finalidade,
+(select sum(b.qt_produto) from prod_movtopro b where a.cd_organiz = b.cd_organiz
+and a.cd_empresa = b.cd_empresa and a.nr_processo = b.nr_processo) qt_livre ,
+
+(select sum(b.qt_produto) from prod_movtopro b where a.cd_organiz = b.cd_organiz
+and a.cd_empresa = b.cd_empresa and a.nr_processo = b.nr_processo and tp_movto in (1,2)) as qt_entrada ,
+0 as qt_bloqueio
+
+
+from prod_movtopro a
+group by a.cd_organiz, a.cd_empresa, a.nr_processo, a.cd_prdagric, a.cd_parcsilo, a.cd_safra, a.cd_finalidade;
+
+prompt
+prompt Creating trigger SALDO_CAIXA
+prompt ============================
+prompt
+CREATE OR REPLACE TRIGGER COMERCIAL_PRO.SALDO_CAIXA
+AFTER INSERT
+   ON FIN_LANCAMENTO
+   FOR EACH ROW
+
+DECLARE
+   v_CONT number(1);
+
+BEGIN
+
+   SELECT COUNT(CD_EMPRESA) into V_CONT FROM FIN_SALDO WHERE cd_organiz = :new.cd_organiz and cd_empresa = :new.cd_empresa
+   and tp_pagamento = :new.tp_pagamento;
+   if (v_cont > 0) then
+
+
+   UPDATE FIN_SALDO SET VL_SALDO = :NEW.VL_OPERACAO + VL_SALDO
+   WHERE CD_ORGANIZ = :NEW.CD_ORGANIZ AND CD_EMPRESA = :NEW.CD_EMPRESA
+   AND TP_PAGAMENTO = :NEW.TP_PAGAMENTO;
+   else
+
+   insert into fin_saldo
+   ( cd_organiz, cD_empresa, vl_saldo, tp_pagamento )
+       values (:new.cd_organiz, :new.cd_empresa, :new.vl_operacao, :new.tp_pagamento);
+   end if;
+
+END;
+/
+
+
+spool off

@@ -104,7 +104,11 @@ td.bgVermelho {
 </tbody>
 </table>
 
+Valor dos lancamentos {{number_format($a, 2, ',', '.')}} 
 
+
+<p>.</p>
+<p>.</p>
 
 <p>.</p>
 
@@ -118,7 +122,7 @@ td.bgVermelho {
    $(document).ready(function() {
     $('#tabela').DataTable( {
         "language": {
-            "url": "http://cdn.datatables.net/plug-ins/1.10.16/i18n/Portuguese-Brasil.json"
+            "url": "https://cdn.datatables.net/plug-ins/1.10.16/i18n/Portuguese-Brasil.json"
         }
     } );
 } );

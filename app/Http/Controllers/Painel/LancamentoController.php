@@ -40,15 +40,32 @@ class LancamentoController extends Controller {
 //  dd ($data);
 
 
+
+//$data2 = date('Y-m-d', strtotime("+30 days",strtotime($data))); 
+//$data3 = date('Y-m-d', strtotime("+32 days",strtotime($data))); 
+
+
+
         $lancamentos = $request->where('empresa', session('empresa'))
                         ->whereDate('data','>=', $data)->get();
                         
+                  //     ->where ('data','>=', $data2)
+                       //->where ('data','<=', $data3)->get();
+                                           
                         //paginate($this->paginate);
+$a = 0;
 
-	$valor = 0;
-        $a = subtotal($valor) ;
+foreach ($lancamentos as $lancamento)
+ 
+{
+   $a = $a + $lancamento->valor;
+}
+
+
   
-        return view('painel.lancamento.lista', compact('lancamentos'));
+ 
+
+        return view('painel.lancamento.lista', compact('lancamentos','a'));
     }
 
     public function create() {
@@ -225,14 +242,20 @@ class LancamentoController extends Controller {
 
 
     
-function subtotal ($valor){
+function subtotal ($dataini, $datafim, $valor){
 
 
 $lancamentos = new lancamento;
 
+$data = date('Y-m-d', strtotime("+30 days",strtotime($dataini))); 
+$data2 = date('Y-m-d', strtotime("+32 days",strtotime($dataini))); 
 
+
+ 
 
 $dad = $lancamentos->where('empresa', session('empresa'))
+                   ->where ('data','>=', $data)
+                   ->where ('data','<=', $data2)
                        ->orderBy('data', 'asc')->get();
 
 foreach ($dad as $lancamento)
